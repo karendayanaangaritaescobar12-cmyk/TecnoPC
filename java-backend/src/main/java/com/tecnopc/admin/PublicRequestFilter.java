@@ -3,18 +3,34 @@ package com.tecnopc.admin;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-/** Bounded, per-process limits. Uses the socket address, never untrusted forwarding headers. */
+/** Bounded, per-process limits. Uses the container-resolved address, never raw forwarding headers. */
 final class PublicRequestFilter extends OncePerRequestFilter {
     private static final int MAX_BODY = 65536;
-    private final Map<String, Window> windows = new HashMap<>();
+    private static final int MAX_WINDOWS = 8192;
+    private static final long WINDOW_MILLIS = 60_000;
+    private static final long CLEANUP_INTERVAL_MILLIS = 10_000;
+    private final Map<String, Window> windows = new LinkedHashMap<>(16, 0.75f, true);
+    private final LongSupplier elapsedMillis;
+    private long nextCleanup;
     private record Window(long expires, int count) {}
+
+    PublicRequestFilter() {
+        this(() -> TimeUnit.NANOSECONDS.toMillis(System.nanoTime()));
+    }
+
+    PublicRequestFilter(LongSupplier elapsedMillis) {
+        this.elapsedMillis = elapsedMillis;
+        nextCleanup = elapsedMillis.getAsLong() + CLEANUP_INTERVAL_MILLIS;
+    }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
@@ -79,12 +95,25 @@ final class PublicRequestFilter extends OncePerRequestFilter {
     }
 
     private synchronized boolean allow(String key, int max) {
-        long now = System.currentTimeMillis();
+        long now = elapsedMillis.getAsLong();
+        // Clean at most every ten seconds while requests arrive; no background thread.
+        if (now >= nextCleanup) {
+            windows.entrySet().removeIf(entry -> entry.getValue().expires() <= now);
+            nextCleanup = now + CLEANUP_INTERVAL_MILLIS;
+        }
         Window window = windows.get(key);
         if (window == null || window.expires() <= now) {
-            if (windows.size() >= 8192) windows.entrySet().removeIf(entry -> entry.getValue().expires() <= now);
-            if (!windows.containsKey(key) && windows.size() >= 8192) return false;
-            window = new Window(now + 60000, 0);
+            if (window == null && windows.size() >= MAX_WINDOWS) {
+                // Expired entries go first. If all are active, admit the new visitor
+                // by forgetting the least recently used entry instead of blocking everyone new.
+                windows.entrySet().removeIf(entry -> entry.getValue().expires() <= now);
+                if (windows.size() >= MAX_WINDOWS) {
+                    var oldest = windows.keySet().iterator();
+                    oldest.next();
+                    oldest.remove();
+                }
+            }
+            window = new Window(now + WINDOW_MILLIS, 0);
         }
         if (window.count() >= max) return false;
         windows.put(key, new Window(window.expires(), window.count() + 1));
