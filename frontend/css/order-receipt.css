@@ -1,0 +1,447 @@
+#order-receipt-dialog {
+  width: min(920px, 96vw);
+  max-height: 94dvh;
+  border: 1px solid #d9e3f0;
+  border-radius: 18px;
+  padding: 0;
+  background: #edf2f9;
+  color: #142039;
+  box-shadow: 0 24px 90px #06132666;
+  overflow: auto;
+}
+#order-receipt-dialog::backdrop {
+  background: #07152bbb;
+  backdrop-filter: blur(4px);
+}
+.receipt-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 28px;
+  background: white;
+  border-bottom: 1px solid #dbe4f0;
+}
+.receipt-toolbar h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.receipt-toolbar p {
+  margin: 6px 0 0;
+  color: #65758e;
+  font-size: 13px;
+}
+.receipt-close {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid #dbe4f0;
+  border-radius: 50%;
+  background: white;
+  font-size: 25px;
+  color: #43536c;
+  cursor: pointer;
+}
+.receipt-status {
+  padding: 15px 28px;
+  font-size: 13px;
+  color: #536984;
+  overflow-wrap: anywhere;
+}
+#order-receipt-paper {
+  padding: 0 24px;
+}
+.customer-receipt {
+  max-width: 794px;
+  margin: auto;
+  background: white;
+  border: 1px solid #dde6f1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px #1420390b;
+}
+.cr-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  background: #13233b;
+  color: white;
+  padding: 30px 28px;
+  border-bottom: 5px solid #1597ff;
+  align-items: center;
+}
+.cr-header img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.cr-header p {
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  margin: 8px 0 0;
+  color: #c4d4eb;
+}
+.cr-document {
+  text-align: right;
+  display: grid;
+  gap: 8px;
+  min-width: 165px;
+}
+.cr-document > span {
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  font-weight: 700;
+}
+.cr-document strong {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.cr-document small {
+  font-size: 10px;
+  color: #c4d4eb;
+}
+.cr-body {
+  padding: 26px 28px;
+}
+.cr-status {
+  padding: 14px 16px;
+  border: 1px solid #f1d698;
+  border-radius: 9px;
+  background: #fff9ec;
+  display: grid;
+  gap: 6px;
+  color: #805511;
+  font-size: 12px;
+}
+.cr-status strong {
+  font-size: 14px;
+}
+.cr-status.is-paid {
+  background: #effbf4;
+  border-color: #bce5cc;
+  color: #147344;
+}
+.cr-customer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #e2e9f3;
+  margin-bottom: 25px;
+}
+.cr-customer > div {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.cr-customer span {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #6e809a;
+}
+.cr-customer strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.cr-customer small {
+  font-size: 10px;
+  color: #6e809a;
+}
+.cr-customer .cr-reference {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.cr-body h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+.cr-caption {
+  color: #6e809a;
+  font-size: 10px;
+  margin: 0 0 15px;
+}
+.cr-products {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 11px;
+}
+.cr-products th {
+  background: #192d49;
+  color: white;
+  padding: 13px 8px;
+  text-align: right;
+  font-size: 10px;
+  font-weight: 700;
+}
+.cr-products th:first-child {
+  text-align: left;
+  width: 40%;
+}
+.cr-products th:nth-child(2) {
+  width: 10%;
+}
+.cr-products td {
+  padding: 16px 8px;
+  border-bottom: 1px solid #e5ebf3;
+  text-align: right;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.cr-products td:first-child {
+  text-align: left;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.cr-products tr:nth-child(odd) td {
+  background: #f6f9fd;
+}
+.cr-totals {
+  margin: 25px 0 32px auto;
+  max-width: 310px;
+  display: grid;
+  gap: 13px;
+}
+.cr-totals > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  color: #6a7d98;
+}
+.cr-totals strong {
+  color: #273d5d;
+  text-align: right;
+}
+.cr-totals .cr-total {
+  background: #086aff;
+  padding: 16px;
+  border-radius: 9px;
+  color: white;
+  align-items: center;
+}
+.cr-total strong {
+  font-size: 21px;
+  color: white;
+  white-space: nowrap;
+}
+.cr-thanks {
+  padding: 18px 0;
+}
+.cr-thanks h3 {
+  font-size: 17px;
+}
+.cr-thanks p {
+  font-size: 11px;
+  color: #687d98;
+  line-height: 1.8;
+  max-width: 570px;
+}
+.cr-footer {
+  margin-top: 30px;
+  padding: 16px 0 0;
+  background: transparent;
+  border-top: 1px solid #e2e9f3;
+  color: #71829b;
+  font-size: 9px;
+  line-height: 1.8;
+}
+.cr-footer p {
+  margin: 0 0 6px;
+}
+.receipt-actions {
+  padding: 22px 26px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.receipt-actions .btn {
+  font-size: 12px;
+  min-height: 43px;
+}
+.receipt-forget {
+  display: block;
+  margin: 0 auto 22px;
+  padding: 7px 12px;
+  border: 0;
+  background: transparent;
+  color: #65758e;
+  font: inherit;
+  font-size: 11px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#resume-order[hidden],
+#order-payment-link[hidden] {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  #order-receipt-dialog {
+    width: 98vw;
+    max-height: 96dvh;
+    border-radius: 12px;
+  }
+  .receipt-toolbar {
+    padding: 16px;
+  }
+  .receipt-toolbar h2 {
+    font-size: 16px;
+  }
+  .receipt-toolbar p {
+    font-size: 11px;
+  }
+  .receipt-status {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+  #order-receipt-paper {
+    padding: 0 8px;
+  }
+  .cr-header {
+    padding: 20px 16px;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .cr-header img {
+    width: 155px;
+  }
+  .cr-header p {
+    font-size: 8px;
+    max-width: 160px;
+  }
+  .cr-document {
+    min-width: 0;
+    max-width: 145px;
+  }
+  .cr-document > span {
+    font-size: 8px;
+  }
+  .cr-document strong {
+    font-size: 12px;
+  }
+  .cr-document small {
+    font-size: 8px;
+    line-height: 1.7;
+  }
+  .cr-body {
+    padding: 18px 13px;
+  }
+  .cr-customer {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .cr-products {
+    font-size: 9px;
+  }
+  .cr-products th {
+    padding: 10px 4px;
+    font-size: 8px;
+  }
+  .cr-products th:first-child {
+    width: 34%;
+  }
+  .cr-products td {
+    padding: 12px 4px;
+  }
+  .cr-products th:nth-child(2) {
+    width: 9%;
+  }
+  .cr-totals {
+    max-width: 100%;
+  }
+  .cr-total strong {
+    font-size: 19px;
+  }
+  .receipt-actions {
+    padding: 18px 12px;
+  }
+  .receipt-actions .btn {
+    flex: 1 1 160px;
+  }
+  .cr-thanks h3 {
+    font-size: 15px;
+  }
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  body:has(#order-receipt-dialog[open]) > :not(#order-receipt-dialog) {
+    display: none !important;
+  }
+  #order-receipt-dialog[open] {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    height: auto !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+  #order-receipt-dialog::backdrop {
+    display: none !important;
+  }
+  .receipt-toolbar,
+  .receipt-status,
+  .receipt-actions,
+  .receipt-forget {
+    display: none !important;
+  }
+  #order-receipt-paper {
+    padding: 0;
+  }
+  .customer-receipt {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: none;
+    overflow: visible;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .cr-header {
+    break-inside: avoid;
+  }
+  .cr-status,
+  .cr-customer,
+  .cr-totals,
+  .cr-thanks,
+  .cr-footer {
+    break-inside: avoid;
+  }
+  .cr-products thead {
+    display: table-header-group;
+  }
+  .cr-products tr {
+    break-inside: avoid;
+  }
+  .cr-products {
+    font-size: 10px;
+  }
+  .cr-body {
+    padding: 22px 0;
+  }
+  .cr-total strong {
+    font-size: 20px;
+  }
+}

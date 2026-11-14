@@ -1,0 +1,45 @@
+﻿{
+    "backend_tests":  {
+                          "skipped":  0,
+                          "errors":  0,
+                          "tests":  127,
+                          "failures":  0
+                      },
+    "http_burst":  {
+                       "peak":  6,
+                       "accepted":  6,
+                       "requests":  32,
+                       "environment":  "local H2 / slow chat simulation / real HTTP sockets",
+                       "overload503":  26
+                   },
+    "release":  "1.5.0",
+    "browser_checks":  33,
+    "artifacts":  [
+                      {
+                          "path":  "java-backend/target/tecnopc-api-resiliencia-1.5.0.jar",
+                          "sha256":  "F0A2C89DB4F557C985870AA87A01EC2160F1AFFACE2AC58816256F774517A27F",
+                          "bytes":  31171932
+                      },
+                      {
+                          "path":  "frontend/index.html",
+                          "sha256":  "2287FC7E099D23D7FB9192CFAEF356493F7111ABF6E3AACB7BCEFA6FAAE36DF2",
+                          "bytes":  21135
+                      },
+                      {
+                          "path":  "frontend/js/app.js",
+                          "sha256":  "102813D96164C2910AD30286B121C84B5A759EFBD37A26B17DAF0C959B482670",
+                          "bytes":  31006
+                      },
+                      {
+                          "path":  "frontend/css/styles.css",
+                          "sha256":  "913E7CD0A1BD153997CBA8C136D586D6CA2861084F84BDC8880F87A85D0C602F",
+                          "bytes":  32275
+                      },
+                      {
+                          "path":  "render.yaml",
+                          "sha256":  "2ACF055296ED2400DE916C87480F7246F809A873A728B39C4F68DF56B49FF675",
+                          "bytes":  642
+                      }
+                  ],
+    "checked_at_utc":  "2026-11-13T21:32:24.0084376Z"
+}

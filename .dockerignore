@@ -1,0 +1,12 @@
+**/target
+.git
+.m2
+docs-java
+*.zip
+*.log
+**/.env*
+**/*credentials*
+**/*secret*
+.local-secrets/
+.tools
+dist

@@ -1,0 +1,170 @@
+﻿[
+    {
+        "name":  "com.tecnopc.admin.AdversarialRolesTest",
+        "tests":  1683,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.ApiCapacityFilterTest",
+        "tests":  3,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.CloudConfigurationTest",
+        "tests":  1,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.CustomerChatTest",
+        "tests":  7,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.HealthControllerTest",
+        "tests":  1,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.IdempotencyHttpTest",
+        "tests":  3,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.IdempotentOperationsTest",
+        "tests":  12,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.LocalAccountResetTest",
+        "tests":  1,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.LoginAttemptFilterTest",
+        "tests":  13,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.NotificationDispatchTest",
+        "tests":  3,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.NotificationIntegrationTest",
+        "tests":  16,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.NotificationSenderTest",
+        "tests":  5,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.PaymentServiceTest",
+        "tests":  10,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.PaymentTransactionTest",
+        "tests":  5,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.ProductAdminTest",
+        "tests":  6,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.PublicApiTest",
+        "tests":  24,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.PublicCatalogTest",
+        "tests":  3,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.PublicRequestFilterTest",
+        "tests":  2,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.ResilienceHttpTest",
+        "tests":  3,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.SecurityConfigTest",
+        "tests":  13,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.StartupIntegrationTest",
+        "tests":  4,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.TiDBMigrationSupportTest",
+        "tests":  1,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.UsuariosPasswordTest",
+        "tests":  2,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    },
+    {
+        "name":  "com.tecnopc.admin.WebhookSignatureTest",
+        "tests":  5,
+        "failures":  0,
+        "errors":  0,
+        "skipped":  0
+    }
+]

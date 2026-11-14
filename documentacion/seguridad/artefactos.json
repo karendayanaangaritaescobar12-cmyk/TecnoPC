@@ -1,0 +1,197 @@
+﻿{
+    "created_at_utc":  "2026-11-13T20:41:07.1314874Z",
+    "artifacts":  [
+                      {
+                          "path":  "java-backend/target/tecnopc-api-seguridad-1.4.0.jar",
+                          "sha256":  "AE8906B25AD2E8BAD56C01E1724B24CB0F38E2DA47523CEA64BC5793A6F1FFAE",
+                          "bytes":  31154146
+                      },
+                      {
+                          "path":  "dist/Seguridad-20261113/TecnoPC-Administrador/TecnoPC-Administrador.exe",
+                          "sha256":  "4643306DE6A78F5D0508C5DFD39A3815FEA868BCF4F4837E6FA4DDE92F89DD94",
+                          "bytes":  432640
+                      },
+                      {
+                          "path":  "dist/Seguridad-20261113/TecnoPC-Administrador/app/app.jar",
+                          "sha256":  "E9E5108E87CD901969D56355DA330C71E2F7FB1D02CC304C4929A370F7DEF5E6",
+                          "bytes":  15614
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\desktop-common-1.0.0.jar",
+                          "sha256":  "41B0939901FA2DB6539837078ADDD02247A6BCB4A11782442C00483173AF2085",
+                          "bytes":  23819
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\jackson-annotations-2.21.jar",
+                          "sha256":  "53CA085F4A150F703F49E1AABD935BD03B43E1EA3D55D135438292AF22CEF56B",
+                          "bytes":  82104
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\jackson-core-2.21.8.jar",
+                          "sha256":  "604EF7765013DAF5CDE192E40BC4C8412C4CA93F4AAF7BF8E9A62FAD1E1026BB",
+                          "bytes":  599566
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\jackson-databind-2.21.8.jar",
+                          "sha256":  "AD77F2285717E2F34C319D988B7C85783A47D0B33F33A501D1FCBF196E61BBAA",
+                          "bytes":  1713950
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\javafx-base-21.0.13-win.jar",
+                          "sha256":  "7A9A3DD9E7AB445AE751F50D9FEDDD550056EF5C267FAF145512686A58F61651",
+                          "bytes":  753226
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\javafx-base-21.0.13.jar",
+                          "sha256":  "709BBC95904092B7D324403306AD302A5F887294F29948FC2AE291C16CF2E595",
+                          "bytes":  302
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\javafx-controls-21.0.13-win.jar",
+                          "sha256":  "2FBF566741CBA2DE8DD886209CD8BA497995B51D2371441FC4D17E0A22BA6E03",
+                          "bytes":  2582586
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\javafx-controls-21.0.13.jar",
+                          "sha256":  "C87221F287E5BAFCC0230D7E83F9A04B9E1D208872B35353D1DE88887EDDF4A3",
+                          "bytes":  306
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\javafx-graphics-21.0.13-win.jar",
+                          "sha256":  "42D59A74A1D0FCFAE03ECD440DB185E76F08B7A65DFC870A0A7EB5BAD6D8F2D7",
+                          "bytes":  5911208
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Administrador\\app\\lib\\javafx-graphics-21.0.13.jar",
+                          "sha256":  "E91D1CF83BFD0AE687C3B6C338E35BE83235BE24F2ADB441E15B1D5EB83D9686",
+                          "bytes":  306
+                      },
+                      {
+                          "path":  "dist/Seguridad-20261113/TecnoPC-Ventas/TecnoPC-Ventas.exe",
+                          "sha256":  "7E652FA622510AC67C747511B401F3A0DA4C46774B7F325891B9B94594A87BDA",
+                          "bytes":  432640
+                      },
+                      {
+                          "path":  "dist/Seguridad-20261113/TecnoPC-Ventas/app/app.jar",
+                          "sha256":  "DE69DAF4353A6D12B3F162A601CF63268CA2F6AA0BD4A915C56DED06FF6EED63",
+                          "bytes":  36496
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\desktop-common-1.0.0.jar",
+                          "sha256":  "41B0939901FA2DB6539837078ADDD02247A6BCB4A11782442C00483173AF2085",
+                          "bytes":  23819
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\jackson-annotations-2.21.jar",
+                          "sha256":  "53CA085F4A150F703F49E1AABD935BD03B43E1EA3D55D135438292AF22CEF56B",
+                          "bytes":  82104
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\jackson-core-2.21.8.jar",
+                          "sha256":  "604EF7765013DAF5CDE192E40BC4C8412C4CA93F4AAF7BF8E9A62FAD1E1026BB",
+                          "bytes":  599566
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\jackson-databind-2.21.8.jar",
+                          "sha256":  "AD77F2285717E2F34C319D988B7C85783A47D0B33F33A501D1FCBF196E61BBAA",
+                          "bytes":  1713950
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\javafx-base-21.0.13-win.jar",
+                          "sha256":  "7A9A3DD9E7AB445AE751F50D9FEDDD550056EF5C267FAF145512686A58F61651",
+                          "bytes":  753226
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\javafx-base-21.0.13.jar",
+                          "sha256":  "709BBC95904092B7D324403306AD302A5F887294F29948FC2AE291C16CF2E595",
+                          "bytes":  302
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\javafx-controls-21.0.13-win.jar",
+                          "sha256":  "2FBF566741CBA2DE8DD886209CD8BA497995B51D2371441FC4D17E0A22BA6E03",
+                          "bytes":  2582586
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\javafx-controls-21.0.13.jar",
+                          "sha256":  "C87221F287E5BAFCC0230D7E83F9A04B9E1D208872B35353D1DE88887EDDF4A3",
+                          "bytes":  306
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\javafx-graphics-21.0.13-win.jar",
+                          "sha256":  "42D59A74A1D0FCFAE03ECD440DB185E76F08B7A65DFC870A0A7EB5BAD6D8F2D7",
+                          "bytes":  5911208
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Ventas\\app\\lib\\javafx-graphics-21.0.13.jar",
+                          "sha256":  "E91D1CF83BFD0AE687C3B6C338E35BE83235BE24F2ADB441E15B1D5EB83D9686",
+                          "bytes":  306
+                      },
+                      {
+                          "path":  "dist/Seguridad-20261113/TecnoPC-Tecnico/TecnoPC-Tecnico.exe",
+                          "sha256":  "78E2F8E1C30A693F582336325D43B9ADC6989D1C903A0F6427906C2FF6542D98",
+                          "bytes":  432640
+                      },
+                      {
+                          "path":  "dist/Seguridad-20261113/TecnoPC-Tecnico/app/app.jar",
+                          "sha256":  "BB24807F7F1E33E1707D4EBCDF87B5DE391B9C8BAAC42C53F6A646212FCF43EE",
+                          "bytes":  15430
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\desktop-common-1.0.0.jar",
+                          "sha256":  "41B0939901FA2DB6539837078ADDD02247A6BCB4A11782442C00483173AF2085",
+                          "bytes":  23819
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\jackson-annotations-2.21.jar",
+                          "sha256":  "53CA085F4A150F703F49E1AABD935BD03B43E1EA3D55D135438292AF22CEF56B",
+                          "bytes":  82104
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\jackson-core-2.21.8.jar",
+                          "sha256":  "604EF7765013DAF5CDE192E40BC4C8412C4CA93F4AAF7BF8E9A62FAD1E1026BB",
+                          "bytes":  599566
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\jackson-databind-2.21.8.jar",
+                          "sha256":  "AD77F2285717E2F34C319D988B7C85783A47D0B33F33A501D1FCBF196E61BBAA",
+                          "bytes":  1713950
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\javafx-base-21.0.13-win.jar",
+                          "sha256":  "7A9A3DD9E7AB445AE751F50D9FEDDD550056EF5C267FAF145512686A58F61651",
+                          "bytes":  753226
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\javafx-base-21.0.13.jar",
+                          "sha256":  "709BBC95904092B7D324403306AD302A5F887294F29948FC2AE291C16CF2E595",
+                          "bytes":  302
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\javafx-controls-21.0.13-win.jar",
+                          "sha256":  "2FBF566741CBA2DE8DD886209CD8BA497995B51D2371441FC4D17E0A22BA6E03",
+                          "bytes":  2582586
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\javafx-controls-21.0.13.jar",
+                          "sha256":  "C87221F287E5BAFCC0230D7E83F9A04B9E1D208872B35353D1DE88887EDDF4A3",
+                          "bytes":  306
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\javafx-graphics-21.0.13-win.jar",
+                          "sha256":  "42D59A74A1D0FCFAE03ECD440DB185E76F08B7A65DFC870A0A7EB5BAD6D8F2D7",
+                          "bytes":  5911208
+                      },
+                      {
+                          "path":  "dist\\Seguridad-20261113\\TecnoPC-Tecnico\\app\\lib\\javafx-graphics-21.0.13.jar",
+                          "sha256":  "E91D1CF83BFD0AE687C3B6C338E35BE83235BE24F2ADB441E15B1D5EB83D9686",
+                          "bytes":  306
+                      }
+                  ],
+    "tests":  {
+                  "skipped":  0,
+                  "errors":  0,
+                  "tests":  113,
+                  "failures":  0
+              },
+    "release":  "1.4.0"
+}

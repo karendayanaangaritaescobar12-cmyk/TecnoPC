@@ -1,0 +1,87 @@
+﻿{
+    "browser_checks":  39,
+    "release":  "1.6.1",
+    "real_tidb_migration_verified":  false,
+    "backend_tests":  {
+                          "skipped":  0,
+                          "errors":  0,
+                          "tests":  143,
+                          "failures":  0
+                      },
+    "desktop_ui_checks":  15,
+    "artifacts":  [
+                      {
+                          "path":  "java-backend/target/tecnopc-api-idempotencia-1.6.1.jar",
+                          "sha256":  "D683271A42F98A305C47235F669BF8D65B24FB4192F66EAB54B0F7E12A359ED6",
+                          "bytes":  31182336
+                      },
+                      {
+                          "path":  "frontend/js/app.js",
+                          "sha256":  "96FA4CF580C1F5EA1F313FC6BC2467B28E92D6C5FDCB42428A7EDF99800B5D6B",
+                          "bytes":  34098
+                      },
+                      {
+                          "path":  "frontend/js/order-receipt.js",
+                          "sha256":  "5E9B8EB433D9268094BFDEC7A19894323CE4ED5C6E918038133D60E1CC4C1AE1",
+                          "bytes":  9269
+                      },
+                      {
+                          "path":  "frontend/index.html",
+                          "sha256":  "D72C72D8A31BD99292FEE6D4F212B9113106D227BA4F4DCCD57D9819B3104B3F",
+                          "bytes":  21261
+                      },
+                      {
+                          "path":  "java-backend/src/main/resources/db/migration/V3__idempotencia.sql",
+                          "sha256":  "AD2A6628E25C1D548D449531D2A7079875162117D0838C0877410D3F949F5DEC",
+                          "bytes":  692
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Administrador/TecnoPC-Administrador.exe",
+                          "sha256":  "70173013D33B6A7E8431016BFD9C87B47E91A646197284D74EB65E9269275E28",
+                          "bytes":  432640
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Administrador/app/app.jar",
+                          "sha256":  "E9E5108E87CD901969D56355DA330C71E2F7FB1D02CC304C4929A370F7DEF5E6",
+                          "bytes":  15614
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Administrador/app/lib/desktop-common-1.0.0.jar",
+                          "sha256":  "E50AD767B333D16F4DAA6D84331A195947CF6F6908C0260EDB68BF43ECB76AB0",
+                          "bytes":  23938
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Ventas/TecnoPC-Ventas.exe",
+                          "sha256":  "BAD8BE22F28936B0D8D7554BF78672A7FCDBB685185BA75012B6216A06BFE7A7",
+                          "bytes":  432640
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Ventas/app/app.jar",
+                          "sha256":  "E77EA0AC72743B8D2F7B37AD66D64BD745BF69099E2858A40E1740D61A6A89DE",
+                          "bytes":  39348
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Ventas/app/lib/desktop-common-1.0.0.jar",
+                          "sha256":  "E50AD767B333D16F4DAA6D84331A195947CF6F6908C0260EDB68BF43ECB76AB0",
+                          "bytes":  23938
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Tecnico/TecnoPC-Tecnico.exe",
+                          "sha256":  "032F6769699603BD134BF0AB3E2266C4ED432217B837D9B9E20488E6E97D7D36",
+                          "bytes":  432640
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Tecnico/app/app.jar",
+                          "sha256":  "BB24807F7F1E33E1707D4EBCDF87B5DE391B9C8BAAC42C53F6A646212FCF43EE",
+                          "bytes":  15430
+                      },
+                      {
+                          "path":  "dist/Idempotencia-20261113-1.6.1/TecnoPC-Tecnico/app/lib/desktop-common-1.0.0.jar",
+                          "sha256":  "E50AD767B333D16F4DAA6D84331A195947CF6F6908C0260EDB68BF43ECB76AB0",
+                          "bytes":  23938
+                      }
+                  ],
+    "real_payment_tests":  false,
+    "sales_tests":  4,
+    "checked_at_utc":  "2026-11-13T22:18:53.1797379Z"
+}

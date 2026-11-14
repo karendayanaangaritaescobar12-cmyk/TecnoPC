@@ -1,0 +1,763 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.6",
+  "serialNumber" : "urn:uuid:edd56d96-7dc9-340f-8057-41d6b8a61ef4",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2026-11-13T20:29:11Z",
+    "lifecycles" : [
+      {
+        "phase" : "build"
+      }
+    ],
+    "tools" : {
+      "components" : [
+        {
+          "type" : "library",
+          "author" : "OWASP Foundation",
+          "group" : "org.cyclonedx",
+          "name" : "cyclonedx-maven-plugin",
+          "version" : "2.9.1",
+          "description" : "CycloneDX Maven plugin",
+          "hashes" : [
+            {
+              "alg" : "MD5",
+              "content" : "9c7a565cf28cce58557d0c621c5ea4b1"
+            },
+            {
+              "alg" : "SHA-1",
+              "content" : "be882d5a22050bfa9d19090b1420c188617d0e1c"
+            },
+            {
+              "alg" : "SHA-256",
+              "content" : "698e0f37184a5b28c245c4065fd036dfce253b52f82fbb7113d81d36326cc249"
+            },
+            {
+              "alg" : "SHA-512",
+              "content" : "c0f0b11026858166f872a2eb54719492e5cecaa0bc9cd6b30b3ecb4a174eed220f4a1b5829d18d6734128e778d3cb3db7ffed177c92866133129cb29081814a0"
+            },
+            {
+              "alg" : "SHA-384",
+              "content" : "d80964707dfe5caca8c70521d5066f57589304c0a657e6fbc7c0614ea0fc7b3b3dbe7778361eee0f54ba111e9cb0ffcb"
+            },
+            {
+              "alg" : "SHA3-384",
+              "content" : "80bc3a275d9514bc457461ff52a72add8c7ecbbc01d8912efce57139016c544ee776981851be0a58fa977ab4221f703f"
+            },
+            {
+              "alg" : "SHA3-256",
+              "content" : "142317d6f245390f4fd2d0c100b16281b8dfc5c0c2cff86943bdcc97039cb699"
+            },
+            {
+              "alg" : "SHA3-512",
+              "content" : "af0fb9137c90b65d1a07f72e4d51ae509956cdb8800f35c961b037cdda1fe4a14ce3b496cef71ba85f1621affcfe29cd42704ae4191ff0b090a9602087c8997b"
+            }
+          ]
+        }
+      ]
+    },
+    "component" : {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.tecnopc/tecnopc-desktop@1.0.0?type=jar",
+      "group" : "com.tecnopc",
+      "name" : "tecnopc-desktop",
+      "version" : "1.0.0",
+      "purl" : "pkg:maven/com.tecnopc/tecnopc-desktop@1.0.0?type=jar"
+    },
+    "properties" : [
+      {
+        "name" : "maven.goal",
+        "value" : "makeBom"
+      },
+      {
+        "name" : "maven.scopes",
+        "value" : "compile,provided,runtime,system"
+      }
+    ]
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.tecnopc/desktop-common@1.0.0?type=jar",
+      "group" : "com.tecnopc",
+      "name" : "desktop-common",
+      "version" : "1.0.0",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "cebdec5cb2e0a4236b6c347b639b6a4a"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "ba5c2e4ece5a7b0c3739782f4f3974ccdcee3d97"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "41b0939901fa2db6539837078addd02247a6bcb4a11782442c00483173af2085"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "47a26dbd34f8ec6e7d197c07ed7f6243ed564396511cd12ace5bf39f0604943d8b740a882642043319f413b96980120b121ddaa07e0fa282794edb11648331b7"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "08b8d4a27878ca1f60941700b69c8c0c90d0a8ddcdd931a9d984e5d8b6d844085bb89ea12e0b0f60bf9e4c8facf0758f"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "9d8cb0d82d5be6759a19efbc94f07f039fcd2d5c23499dffd52b7b4835fed882277ca7adb3fe49460fc6c8afc0463583"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "ed2815807de894bf12e9db7a47cdbeaad28e86f376d306f775f6a802e0471adf"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "d20df133f20a2470345ce8c89fd472c33f458fb8c14a914066265c2d38ae3d956b40bd433b411cc932688d7137bc67f60cf09e241292a85971bbb4a855e2f85b"
+        }
+      ],
+      "purl" : "pkg:maven/com.tecnopc/desktop-common@1.0.0?type=jar"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.openjfx/javafx-controls@21.0.13?type=jar",
+      "group" : "org.openjfx",
+      "name" : "javafx-controls",
+      "version" : "21.0.13",
+      "description" : "OpenJFX javafx-controls",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "3eabd697244d65d50fc71dede7848434"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "34fc1abfec6d667b3c57b546710845ad8f0a7da6"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "c87221f287e5bafcc0230d7e83f9a04b9e1d208872b35353d1de88887eddf4a3"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "607aa751c7218ff014462ce21871e1cb7aa723b06f167e9215f1e04ab0645aefe8a7b11dc6fcbb8bae32d87f36391f16a8ba0bcf0f7a41f539ca1a14a5b92736"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "275fa3ff920187cd3eedb628a962a770f058e2b36518cc93c374dd12938e69f6b3d527fac7e1a3b44211c42a02b76367"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "ebb86c8d98824c5eecba78a9fa547347c8c0b035a526d701d812333a0d0737d824ebe93b0ca5509e1e463d9f3f6eea22"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "a406adabd7ea9c7cd9050a0bccd9c44e5faa751cb7414e2235a9273b883a3a8c"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "949a8ac76d364a554f0d7ab9a121fe7d56f32dcb19309476f1fcb0203ccdaeb05c73ec4e4185a6aaacfa84d6f1a68059726df5f2be4e90245de4b80ab0e7681b"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "GPL-2.0-with-classpath-exception"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.openjfx/javafx-controls@21.0.13?type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://openjdk.java.net/projects/openjfx/"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/openjdk/jfx/javafx-controls"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.openjfx/javafx-controls@21.0.13?classifier=win&type=jar",
+      "group" : "org.openjfx",
+      "name" : "javafx-controls",
+      "version" : "21.0.13",
+      "description" : "OpenJFX javafx-controls",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "7c1464ed1549cdd6342920caaf4029f1"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "c3e77321f7ce6d096cf4eb8c55faf67d36a395ab"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "2fbf566741cba2de8dd886209cd8ba497995b51d2371441fc4d17e0a22ba6e03"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "cdb1c27c46787bec06344e3a99b820cf772e2c1851167a78474626afc3273dd4e89dd6d6b9c349fdc69526f9200e58ad939e257094fca0e433615d804e363417"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "5bbe90dfbf51a086a22786c0bd6d0bc26b2be089a1f2214beefe2beb4e52bd291d6fb37c67f8fbb035c1db34a9fbf0c0"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "cda672b19a2957d4e3b7bdea1a3222d34df19a0da5696b5a130112e99ef594d73f994a7c7406975201ad3c781c7d16d5"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "d331f977673b657e2a5a9a10fe582830bab5f53333fe1b2fd4089d0459decb81"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "6712fb07bf54ae5fb03e0a92805de731e16b5ae214398a7671d3482fe7cbe307741cb26078dc3ff42d4d7d7e38d30744024ad49f59d4f85f4002f50984b19814"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "GPL-2.0-with-classpath-exception"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.openjfx/javafx-controls@21.0.13?classifier=win&type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://openjdk.java.net/projects/openjfx/"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/openjdk/jfx/javafx-controls"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.openjfx/javafx-graphics@21.0.13?type=jar",
+      "group" : "org.openjfx",
+      "name" : "javafx-graphics",
+      "version" : "21.0.13",
+      "description" : "OpenJFX javafx-graphics",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "54bb6e365cbf7479feee15c659148fb2"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "2a52aed47af3327e25152fa21dfe3f583ad47628"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "e91d1cf83bfd0ae687c3b6c338e35be83235be24f2adb441e15b1d5eb83d9686"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "435af9c5c38fda48e799d1ead63942b401ce8f7d02e4ba4ae0306d4f5ff98fca29d3fd673c4e238f10d298ba2d4a9e32040d3058c9de83283026371693550530"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "b13d160327a1feee33a2db3af8e0a0d773fb9a9119d0f07b4fb8137670ccf8d87adfcf4936eb1e88cbc056c229958c17"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "483adc0ead838f471f84921c14a44fe9ebcd6e9f7afe46fd3ee750bbbf0bed1bf490e800992d5300078d430b2801a78a"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "5aa42fe6b7305b69caab86231f8866a1349291218d1ac51f8654695fdadf0c24"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "4090df22c685c315f899aae8d2c709be89d37ffb7cbf3156eb243feecf8acc903f00a895952703267ae1d5ac0537240a78ec9e9591bb93aad4d8f497bbbe1096"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "GPL-2.0-with-classpath-exception"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.openjfx/javafx-graphics@21.0.13?type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://openjdk.java.net/projects/openjfx/"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/openjdk/jfx/javafx-graphics"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.openjfx/javafx-graphics@21.0.13?classifier=win&type=jar",
+      "group" : "org.openjfx",
+      "name" : "javafx-graphics",
+      "version" : "21.0.13",
+      "description" : "OpenJFX javafx-graphics",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "69358497d47d639d965dbb964c989c00"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "65630a339a750f8d39ccdb66782afebecee363a1"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "42d59a74a1d0fcfae03ecd440db185e76f08b7a65dfc870a0a7eb5bad6d8f2d7"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "ac1f45b70c2dc41ba131b4146cf3f801b617e429d602cc8423446629ea4cb8cab914e7e0b557a5dce63f574d034240a0f813da8e09e9bdb6b1242ad75d83b351"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "e763a81deb8abfa7c6ee507e59d3b070bc5d41f7660b8d6ac0814c86662955507ceb4730c5d6dba7363ca1b556db5ab4"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "3c449f289cabcb78e6fb7fdf6daab6e4a0085a0c59ced67d1c2117871eefc70af2dd79ffb0f32e3255926880eb25daa7"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "bee2097ac9e89d2582bd66e6bd4752b02684a16fea4e1c8b28f79d6c00cc719e"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "ca11d371c75fbc8b624799907751bdf04f2fcb1fd4c5626d2598420355089d50261f12ae7d24121a66f4e8bbab4c32ffec0e016ea9730d304d7e89c5d6f1b47e"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "GPL-2.0-with-classpath-exception"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.openjfx/javafx-graphics@21.0.13?classifier=win&type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://openjdk.java.net/projects/openjfx/"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/openjdk/jfx/javafx-graphics"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.openjfx/javafx-base@21.0.13?type=jar",
+      "group" : "org.openjfx",
+      "name" : "javafx-base",
+      "version" : "21.0.13",
+      "description" : "OpenJFX javafx-base",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "8513a08becdd4056aa592fd67d73f6bd"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "34f2e123305430f4245896bb5180230e32cec36f"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "709bbc95904092b7d324403306ad302a5f887294f29948fc2ae291c16cf2e595"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "fbb3eebf7e7475c0088944d101e491a4287f1390f99446c436865aab8929d9ee878ac16631ff9c8153e3743c120f16a754d98bd729951f4c1a34394315127acc"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "1c033677f198bd9f1cd3715e3ecc0f2a2892fc39112c2dd9abb84110da36e88ddb9a98d3993c02d2d3f2c5bdba2c8b37"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "f9f017fe90f857830b0f7237d820c3488245dda0ef951503478c88d89264860224b3989e8477f1f16925f0d319ca1e82"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "915001c8ecf97f5935ded9a82743a966442242134a54541cbb0fc4eb6eb397fe"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "e4496512a442d53823890ce02e7404fd051dc21eba3fcb16f1a43243740286f7b3bbbca55e187fb61fc8108b3041066e86697e28f45e329a93c702ce95768718"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "GPL-2.0-with-classpath-exception"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.openjfx/javafx-base@21.0.13?type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://openjdk.java.net/projects/openjfx/"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/openjdk/jfx/javafx-base"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/org.openjfx/javafx-base@21.0.13?classifier=win&type=jar",
+      "group" : "org.openjfx",
+      "name" : "javafx-base",
+      "version" : "21.0.13",
+      "description" : "OpenJFX javafx-base",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "e3125dda753d036097c541f8f2e2f159"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "328a95df9ee0837075c2af95ba63df982355ecc9"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "7a9a3dd9e7ab445ae751f50d9feddd550056ef5c267faf145512686a58f61651"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "7e9a8baf78d75e5c555fa91d30e96a7cf24d7f9727c290ee4175a5c5114b5dabf45ded20831a28a263b7ffb8df878f3060a64681c904c8c90b04209b75845a60"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "6a52a77287a369f1dfc3a830e1ac5be286941f3875aa0bb777c8c98aaa4c7214ba1702d95e96b4f36179cd785aaeafac"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "0876d30f6a0f7a54e488f55c5c6daa67a404dbc9d76b8203ed247aba5aa1714991800d06f8b4d3726c8594589fdf8c19"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "6e6cf3709ae8db6b729484a1819c1e00d8d55ce269b6247dde0bce93ef89f72a"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "5ea796dab7a578b3c3f13b557fd77bf2d53711f5661f3f70719a2d1e5b0599b8ab03137ee8ee4638fff749ccb35af5a37daa1fd65aee74ac79db72e7d0ca06b2"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "GPL-2.0-with-classpath-exception"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/org.openjfx/javafx-base@21.0.13?classifier=win&type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://openjdk.java.net/projects/openjfx/"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/openjdk/jfx/javafx-base"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.8?type=jar",
+      "publisher" : "FasterXML",
+      "group" : "com.fasterxml.jackson.core",
+      "name" : "jackson-databind",
+      "version" : "2.21.8",
+      "description" : "General data-binding functionality for Jackson: works on core streaming API",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "eacb44f3b4e1b133d743d0166af82e97"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "c3ebe92d2efdba6ebf85d0eaa05a3a1724dab67e"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "ad77f2285717e2f34c319d988b7c85783a47d0b33f33a501d1fcbf196e61bbaa"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "c59dd9b44473a279ac1d558257df10c121adc910d125e045ae72aa5df441b9512f3a57e659cfe0b74f027191b8b6adca8139ad58325f49e48d2f9a37cb4f40b7"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "98936b955bb08444b1825d64ad120e348c186aadb5da2ab40902bcd9833bcfdc85e05bb1216576c73a4eda251b742771"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "39d8c68b48ee703859589c397abd7f133b83e9327aef52cedf53aec859c1963ccbf66bcbbee8da6b61a21c0d5517b349"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "748a9c128f2e179cebab92f91444a57906e5e42e4ad2b1d296fc12d4bed548c6"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "a146da179c78eaebde367936799b7b59cad214daca47c66256aaf4d3a36c43cf65752fc8283c6d3c5d7d65b221eb42f07d6634b26f4d2cb090bdcf8cb66de7a0"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "Apache-2.0"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.8?type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://github.com/FasterXML/jackson"
+        },
+        {
+          "type" : "distribution-intake",
+          "url" : "https://central.sonatype.com/api/v1/publisher"
+        },
+        {
+          "type" : "issue-tracker",
+          "url" : "https://github.com/FasterXML/jackson-databind/issues"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/FasterXML/jackson-databind"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21?type=jar",
+      "publisher" : "FasterXML",
+      "group" : "com.fasterxml.jackson.core",
+      "name" : "jackson-annotations",
+      "version" : "2.21",
+      "description" : "Core annotations used for value types, used by Jackson data binding package.",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "e0d0c3e7300954f73e43c67d933aaea4"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "b1bc1868bf02dc0bd6c7836257a036a331005309"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "53ca085f4a150f703f49e1aabd935bd03b43e1ea3d55d135438292af22cef56b"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "d832a99867acc2d5afb2596da760c50e6a6b54c1bbc8e6c4186f267a16e1d55c7a916ef8b034ad6b277c41e3342b91dcdc2e3dcea8bdccfe89e7c147894591be"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "30b15d68f8da6f6c26aa9f6c95d09152b6c1a8092cd976cf600d63d1751509a73865f937e0ad97d8d55bf20f6a749b44"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "5205b51f6ed689cf31b58b98a61ca9e17a439c15d669dcb408ec4d430e77ac9ac57d39d5ca1f9973e8d184f6dd57ec4f"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "d6782d188a72b2bb96e4b595343e783012b3f98c30f7b9950244c21739334509"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "b648f1e9ffe818227d53fbde409e61858ac22d3f78705eaf08065587ed512c9b33b0f5e2222356bfb33fb2973bb5a3184e31d2a7099f8fc8d2fd23eb4612a4bf"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "Apache-2.0"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21?type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://github.com/FasterXML/jackson"
+        },
+        {
+          "type" : "distribution-intake",
+          "url" : "https://central.sonatype.com/api/v1/publisher"
+        },
+        {
+          "type" : "issue-tracker",
+          "url" : "https://github.com/FasterXML/jackson-annotations/issues"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/FasterXML/jackson-annotations"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.8?type=jar",
+      "publisher" : "FasterXML",
+      "group" : "com.fasterxml.jackson.core",
+      "name" : "jackson-core",
+      "version" : "2.21.8",
+      "description" : "Core Jackson processing abstractions (aka Streaming API), implementation for JSON",
+      "scope" : "required",
+      "hashes" : [
+        {
+          "alg" : "MD5",
+          "content" : "7a0e2423b9aaed68f0ad866c98074edc"
+        },
+        {
+          "alg" : "SHA-1",
+          "content" : "6343fa08a059a4f5afa7411c8c04652f2880d69b"
+        },
+        {
+          "alg" : "SHA-256",
+          "content" : "604ef7765013daf5cde192e40bc4c8412c4ca93f4aaf7bf8e9a62fad1e1026bb"
+        },
+        {
+          "alg" : "SHA-512",
+          "content" : "afdde0d5cf8ea50c34968e02c4cfbf2c79cef2498bec3eaa4c85e2ac69bcd4b30884ebbbf22d52de35fae19095a2d624d3602e5c6b5c514a4ea9a6a8e4e97f10"
+        },
+        {
+          "alg" : "SHA-384",
+          "content" : "72f45be7cb7e58420ff4fa56e66c282bd5363bec8fc2185cad0f212b82bcc563bcb6f1cb218a31248be51b2f449aac99"
+        },
+        {
+          "alg" : "SHA3-384",
+          "content" : "5ffea2feb3825ce754ea9663227f766382784cc4d0c0b4d418d58f723b394bde4050c85f53fd76bd724a4bf0c9545f1d"
+        },
+        {
+          "alg" : "SHA3-256",
+          "content" : "7ef384753658e3ee321000d7efe46071e07b33634a7e04be956bb9556fdc779e"
+        },
+        {
+          "alg" : "SHA3-512",
+          "content" : "984eb369143729072d6cc699b532eaacd5d630013240a255513a204139850f7f4f6617a65e102e45848bf22a2763652b5aa1d285f09708cc2c0fa191e53953f4"
+        }
+      ],
+      "licenses" : [
+        {
+          "license" : {
+            "id" : "Apache-2.0"
+          }
+        }
+      ],
+      "purl" : "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.8?type=jar",
+      "externalReferences" : [
+        {
+          "type" : "website",
+          "url" : "https://github.com/FasterXML/jackson-core"
+        },
+        {
+          "type" : "distribution-intake",
+          "url" : "https://central.sonatype.com/api/v1/publisher"
+        },
+        {
+          "type" : "issue-tracker",
+          "url" : "https://github.com/FasterXML/jackson-core/issues"
+        },
+        {
+          "type" : "vcs",
+          "url" : "https://github.com/FasterXML/jackson-core"
+        }
+      ]
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "pkg:maven/com.tecnopc/tecnopc-desktop@1.0.0?type=jar",
+      "dependsOn" : [
+        "pkg:maven/com.tecnopc/desktop-common@1.0.0?type=jar",
+        "pkg:maven/org.openjfx/javafx-controls@21.0.13?type=jar",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.8?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/com.tecnopc/desktop-common@1.0.0?type=jar",
+      "dependsOn" : [
+        "pkg:maven/org.openjfx/javafx-controls@21.0.13?type=jar",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.8?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/org.openjfx/javafx-controls@21.0.13?type=jar",
+      "dependsOn" : [
+        "pkg:maven/org.openjfx/javafx-controls@21.0.13?classifier=win&type=jar",
+        "pkg:maven/org.openjfx/javafx-graphics@21.0.13?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/org.openjfx/javafx-controls@21.0.13?classifier=win&type=jar",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "pkg:maven/org.openjfx/javafx-graphics@21.0.13?type=jar",
+      "dependsOn" : [
+        "pkg:maven/org.openjfx/javafx-graphics@21.0.13?classifier=win&type=jar",
+        "pkg:maven/org.openjfx/javafx-base@21.0.13?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/org.openjfx/javafx-graphics@21.0.13?classifier=win&type=jar",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "pkg:maven/org.openjfx/javafx-base@21.0.13?type=jar",
+      "dependsOn" : [
+        "pkg:maven/org.openjfx/javafx-base@21.0.13?classifier=win&type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/org.openjfx/javafx-base@21.0.13?classifier=win&type=jar",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.8?type=jar",
+      "dependsOn" : [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21?type=jar",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.8?type=jar"
+      ]
+    },
+    {
+      "ref" : "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21?type=jar",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.8?type=jar",
+      "dependsOn" : [ ]
+    }
+  ]
+}

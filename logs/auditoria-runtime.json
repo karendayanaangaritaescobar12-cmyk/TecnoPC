@@ -1,0 +1,32 @@
+﻿[
+    {
+        "estado":  0,
+        "ruta":  "/"
+    },
+    {
+        "ruta":  "/api/public/productos",
+        "cabeceras":  {
+                          "X-Frame-Options":  "DENY",
+                          "X-Content-Type-Options":  "nosniff",
+                          "Cache-Control":  "no-cache, no-store, max-age=0, must-revalidate"
+                      },
+        "estado":  200
+    },
+    {
+        "ruta":  "/healthz",
+        "cabeceras":  {
+                          "X-Frame-Options":  "DENY",
+                          "X-Content-Type-Options":  "nosniff",
+                          "Cache-Control":  "no-cache, no-store, max-age=0, must-revalidate"
+                      },
+        "estado":  200
+    },
+    {
+        "estado":  401,
+        "ruta":  "/api/admin/resumen"
+    },
+    {
+        "estado":  401,
+        "ruta":  "/js/order-receipt.js"
+    }
+]

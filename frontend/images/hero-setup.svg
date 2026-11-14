@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" fill="none">
+<defs><linearGradient id="frame" x1="360" y1="55" x2="570" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#263956"/><stop offset="1" stop-color="#060d20"/></linearGradient><linearGradient id="glass" x1="410" y1="75" x2="570" y2="290" gradientUnits="userSpaceOnUse"><stop stop-color="#123053" stop-opacity=".8"/><stop offset="1" stop-color="#100f28"/></linearGradient><linearGradient id="ring"><stop stop-color="#2ee4ff"/><stop offset=".45" stop-color="#5543ff"/><stop offset=".75" stop-color="#f442cc"/><stop offset="1" stop-color="#586eff"/></linearGradient><linearGradient id="screen" x1="150" y1="160" x2="340" y2="315" gradientUnits="userSpaceOnUse"><stop stop-color="#07182b"/><stop offset=".35" stop-color="#0747ce"/><stop offset=".65" stop-color="#4b17ce"/><stop offset="1" stop-color="#132256"/></linearGradient><linearGradient id="deck"><stop stop-color="#a6c9ee"/><stop offset=".3" stop-color="#537fae"/><stop offset="1" stop-color="#17264f"/></linearGradient><radialGradient id="floor"><stop stop-color="#294fff" stop-opacity=".45"/><stop offset="1" stop-color="#182451" stop-opacity="0"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="5"/></filter></defs>
+<ellipse cx="376" cy="349" rx="248" ry="42" fill="url(#floor)"/>
+<path d="M337 84 467 38l105 25-132 52z" fill="#223958" stroke="#54709b"/><path d="m337 84 103 31v221l-102-37z" fill="url(#frame)" stroke="#415578"/><path d="m440 115 132-52v222l-132 51z" fill="#0a1025" stroke="#415d87"/>
+<path d="m349 102 77 24v188l-77-28z" fill="url(#glass)" stroke="#2b5078"/><path d="m355 113 67 21v61l-67-19z" fill="#151e3a"/>
+<path d="m364 139 48 14v12l-48-14zm0 34 48 14v12l-48-14z" fill="#8f3ce7"/><path d="m365 141 45 14m-45 20 45 14" stroke="#eb70ff" stroke-width="2"/>
+<path d="m357 217 67 20v16l-67-20z" fill="#182d48" stroke="#4d6bb3"/><path d="m362 227 56 17" stroke="#3ca9ff" stroke-width="4"/><path d="m357 267 65 19v19l-65-21z" fill="#15273e" stroke="#345b9b"/>
+<g stroke="url(#ring)" stroke-width="10" fill="#12162c"><ellipse cx="505" cy="133" rx="33" ry="37"/><ellipse cx="505" cy="213" rx="33" ry="37"/><ellipse cx="505" cy="289" rx="27" ry="30"/></g>
+<g stroke="url(#ring)" stroke-width="12" filter="url(#glow)" opacity=".55"><ellipse cx="505" cy="133" rx="33" ry="37"/><ellipse cx="505" cy="213" rx="33" ry="37"/><ellipse cx="505" cy="289" rx="27" ry="30"/></g>
+<g fill="#5a4cab"><path d="m505 105 8 20 17 5-20 11-1 20-14-18-19-4 21-10z"/><path d="m505 185 8 20 17 5-20 11-1 20-14-18-19-4 21-10z"/><path d="m505 268 6 14 12 4-14 8-1 14-10-13-14-3 15-7z"/></g><g fill="#a597ff"><ellipse cx="505" cy="133" rx="8" ry="9"/><ellipse cx="505" cy="213" rx="8" ry="9"/><ellipse cx="505" cy="289" rx="6" ry="7"/></g>
+<path d="m452 107 100-38" stroke="#4b9cff" stroke-width="2"/><ellipse cx="546" cy="82" rx="3" ry="2" fill="#54c3ff"/><path d="m453 335 1 8 17-6m70-31v8l13-5" fill="#081122" stroke="#5374a1"/>
+<path d="M165 159q0-8 9-9l203-15q9-1 8 8l-24 165-230 13z" fill="#122039" stroke="#6d94c2" stroke-width="3"/>
+<path d="m175 160 198-15-24 151-206 13z" fill="url(#screen)"/>
+<path d="m143 307 119-112 71 20 40-70-24 151z" fill="#174acb" opacity=".6"/>
+<path d="m145 302 109-88 81 14 36-71-15 96-86-21-72 74z" fill="#512ed0"/><path d="m164 304 94-63 70 8-12 52z" fill="#0d67d1" opacity=".6"/>
+<path d="m173 298 90-78 62 12 39-65" stroke="#5b8bff" stroke-width="3"/><path d="m176 295 82-75 67 12 36-65" stroke="#ac53ff" filter="url(#glow)" stroke-width="8" opacity=".8"/>
+<path d="m131 321 230-13 69 33-277 26-80-25z" fill="url(#deck)" stroke="#7ba5d7"/>
+<path d="m149 324 199-12 50 25-233 20-58-16z" fill="#1a2b4c"/>
+<g stroke="#547ba8" stroke-width="2" opacity=".8"><path d="m155 328 192-11m-209 19 226-13m-208 21 225-15m-203 21 213-16"/><path d="m162 324 36 27m-16-28 36 27m-15-28 36 26m-15-27 35 25m-15-26 36 24m-15-25 35 22m-14-24 36 22m-15-23 35 20m-15-22 35 21"/></g>
+<path d="m222 348 54-4 12 7-55 5z" fill="#5c80ac" stroke="#769bc8"/><path d="m73 342 80 25 277-26-13 10-267 28-71-24z" fill="#243959" stroke="#5477a2"/>
+<path d="m87 349 69 20 260-25" stroke="#7caeef" stroke-width="2"/><path d="m119 374 293-23" stroke="#3957cf" filter="url(#glow)" stroke-width="6"/>
+</svg>

@@ -1,0 +1,15 @@
+.m2/
+**/target/
+*.zip
+*.log
+.env
+.env.*
+**/.env
+**/.env.*
+docs-java/
+.idea/
+*.iml
+.DS_Store
+.local-secrets/
+.tools/
+dist/
