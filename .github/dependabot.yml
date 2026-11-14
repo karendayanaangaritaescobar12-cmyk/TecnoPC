@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directories:
+      - /java-backend
+      - /desktop-common
+      - /java-desktop
+      - /java-vendedor
+      - /java-tecnico
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    groups:
+      dependencias-compatibles:
+        update-types: [minor, patch]
+    commit-message:
+      prefix: "Actualizar dependencias Java"
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    groups:
+      herramientas-compatibles:
+        update-types: [minor, patch]
+    commit-message:
+      prefix: "Actualizar herramientas de mantenimiento"
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "Actualizar comprobaciones automaticas"

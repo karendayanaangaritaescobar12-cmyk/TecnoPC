@@ -13,6 +13,8 @@ docs-java/
 .local-secrets/
 .tools/
 dist/
+node_modules/
+coverage/
 
 # Archivos locales y reportes generados
 /logs/

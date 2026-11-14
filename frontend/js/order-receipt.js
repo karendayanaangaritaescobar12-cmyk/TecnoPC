@@ -1,3 +1,7 @@
+import { api } from "./api.js";
+import { esc } from "./display.js";
+import { validPaymentUrl } from "./payment-url.js";
+
 /* Private order reference stays in this browser tab, never in a URL or localStorage. */
 (() => {
   const key = "tecnopc-order-receipt";
@@ -8,8 +12,7 @@
   const pay = document.querySelector("#order-payment-link");
   const print = document.querySelector("#print-order-receipt");
   const refresh = document.querySelector("#refresh-order-receipt");
-  const validReference = (value) =>
-    /^TPC-PAY-[a-fA-F0-9]{32}$/.test(String(value || ""));
+  const validReference = (value) => /^TPC-PAY-[a-fA-F0-9]{32}$/.test(String(value || ""));
   const receiptMoney = (value) =>
     new Intl.NumberFormat("es-CO", {
       style: "currency",
@@ -21,21 +24,6 @@
     loading = false,
     lastRefresh = 0,
     receipt = null;
-  const validPaymentUrl = (value) => {
-    try {
-      const url = new URL(value);
-      return (
-        url.protocol === "https:" &&
-        ["www.mercadopago.com.co", "sandbox.mercadopago.com.co"].includes(
-          url.hostname,
-        ) &&
-        !url.username &&
-        !url.password
-      );
-    } catch {
-      return false;
-    }
-  };
   try {
     const saved = JSON.parse(sessionStorage.getItem(key));
     if (saved && validReference(saved.referencia))
@@ -91,7 +79,12 @@
       ],
     };
     const ready = approved && data.preparacion === "listo";
-    const [label, detail] = (ready ? ["Listo para recoger", "Tu pedido está listo para entregar en TecnoPC. Presenta la referencia del pedido al recogerlo."] : states[data.estado]) || [
+    const [label, detail] = (ready
+      ? [
+          "Listo para recoger",
+          "Tu pedido está listo para entregar en TecnoPC. Presenta la referencia del pedido al recogerlo.",
+        ]
+      : states[data.estado]) || [
       "Estado por confirmar",
       "No se ha podido confirmar el estado del pedido.",
     ];
@@ -134,11 +127,12 @@
         Number(data.total) <= 0 ||
         Number.isNaN(Date.parse(data.fecha))
       )
-        throw new Error(
-          "El comprobante no contiene todos los datos necesarios.",
-        );
+        throw new Error("El comprobante no contiene todos los datos necesarios.");
       receipt = data;
-      if (validPaymentUrl(data.url_pago)) { order.url_pago = data.url_pago; remember(); }
+      if (validPaymentUrl(data.url_pago)) {
+        order.url_pago = data.url_pago;
+        remember();
+      }
       render(data);
       lastRefresh = Date.now();
     } catch (error) {
@@ -176,33 +170,23 @@
   print.addEventListener("click", () => {
     if (receipt) window.print();
   });
-  document
-    .querySelector("#close-order-receipt")
-    .addEventListener("click", () => dialog.close());
-  document
-    .querySelector("#forget-order-receipt")
-    .addEventListener("click", () => {
-      if (
-        !confirm(
-          "¿Olvidar el comprobante en este navegador? Guarda antes un PDF si lo necesitas. Esto no cancela el pedido ni devuelve un pago.",
-        )
-      )
-        return;
-      order = null;
-      receipt = null;
-      remember();
-      paper.replaceChildren();
-      pay.removeAttribute("href");
-      dialog.close();
-    });
-  document.addEventListener("visibilitychange", () => {
+  document.querySelector("#close-order-receipt").addEventListener("click", () => dialog.close());
+  document.querySelector("#forget-order-receipt").addEventListener("click", () => {
     if (
-      !document.hidden &&
-      dialog.open &&
-      order &&
-      Date.now() - lastRefresh > 5000
+      !confirm(
+        "¿Olvidar el comprobante en este navegador? Guarda antes un PDF si lo necesitas. Esto no cancela el pedido ni devuelve un pago.",
+      )
     )
-      update();
+      return;
+    order = null;
+    receipt = null;
+    remember();
+    paper.replaceChildren();
+    pay.removeAttribute("href");
+    dialog.close();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && dialog.open && order && Date.now() - lastRefresh > 5000) update();
   });
   remember();
 })();

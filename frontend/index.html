@@ -10,8 +10,8 @@
     <link rel="apple-touch-icon" href="images/tecnopc-icon-180.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/order-receipt.css" />
-    <script src="js/app.js" defer></script>
-    <script src="js/order-receipt.js" defer></script>
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/order-receipt.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -19,9 +19,7 @@
       <div class="header-main wrap">
         <a class="brand" href="#inicio" aria-label="TecnoPC, inicio"
           ><svg viewBox="0 0 40 36" aria-hidden="true">
-            <path
-              d="M8 5H35L31 25H4ZM13 11H28L26 19H11ZM8 30H34L38 10"
-            /></svg
+            <path d="M8 5H35L31 25H4ZM13 11H28L26 19H11ZM8 30H34L38 10" /></svg
           ><span>Tecno<b>PC</b></span></a
         >
         <form id="global-search" class="search-box" role="search">
@@ -45,19 +43,12 @@
       <nav class="site-nav" aria-label="Navegación principal">
         <div class="wrap nav-inner">
           <a href="#inicio" data-view-link="inicio">⌂ <span>Inicio</span></a
-          ><a href="#catalogo" data-view-link="catalogo"
-            >▦ <span>Catálogo</span></a
+          ><a href="#catalogo" data-view-link="catalogo">▦ <span>Catálogo</span></a
           ><a href="#armar" data-view-link="armar">⚒ <span>Armar mi PC</span></a
-          ><a
-            href="#promociones"
-            data-view-link="promociones"
-            class="promo-link"
+          ><a href="#promociones" data-view-link="promociones" class="promo-link"
             >◇ <span>Promociones</span></a
-          ><a href="#servicio" data-view-link="servicio"
-            >♧ <span>Servicio técnico</span></a
-          ><a href="#seguimiento" data-view-link="seguimiento"
-            >◎ <span>Seguimiento</span></a
-          >
+          ><a href="#servicio" data-view-link="servicio">♧ <span>Servicio técnico</span></a
+          ><a href="#seguimiento" data-view-link="seguimiento">◎ <span>Seguimiento</span></a>
         </div>
       </nav>
     </header>
@@ -69,16 +60,14 @@
               <span class="eyebrow light">TECNOLOGÍA QUE TE ACOMPAÑA</span>
               <h1>Tu próximo computador<br />empieza <em>aquí.</em></h1>
               <p>
-                Portátiles, PCs y componentes.<br />Encuentra tu equipo y el
-                soporte que necesitas, en un solo lugar.
+                Portátiles, PCs y componentes.<br />Encuentra tu equipo y el soporte que necesitas,
+                en un solo lugar.
               </p>
               <div class="hero-actions">
                 <a class="btn" href="#catalogo">Ver productos <span>↗</span></a
                 ><a class="btn outline-light" href="#armar">Armar mi PC</a>
               </div>
-              <div class="hero-note">
-                <i></i> Compra, personaliza y sigue tu equipo.
-              </div>
+              <div class="hero-note"><i></i> Compra, personaliza y sigue tu equipo.</div>
             </div>
             <img
               class="hero-art"
@@ -121,24 +110,14 @@
             <div>
               <span class="eyebrow">TU EQUIPO, EN BUENAS MANOS</span>
               <h2>¿Tu computador necesita una revisión?</h2>
-              <p>
-                Solicita servicio técnico y consulta el avance con tu código de
-                ingreso.
-              </p>
+              <p>Solicita servicio técnico y consulta el avance con tu código de ingreso.</p>
             </div>
             <a class="btn secondary" href="#servicio">Solicitar revisión →</a>
           </div>
         </div>
       </section>
-      <section
-        data-view="catalogo"
-        id="catalogo"
-        class="view wrap page-space"
-        hidden
-      >
-        <div class="breadcrumb">
-          <a href="#inicio">Inicio</a><span>/</span>Catálogo
-        </div>
+      <section data-view="catalogo" id="catalogo" class="view wrap page-space" hidden>
+        <div class="breadcrumb"><a href="#inicio">Inicio</a><span>/</span>Catálogo</div>
         <div class="catalog-layout">
           <aside class="filters">
             <details open>
@@ -167,12 +146,8 @@
                 </div>
               </div>
               <div class="filter-block">
-                <label class="check"
-                  ><input id="in-stock" type="checkbox" /> Solo
-                  disponibles</label
-                ><button id="clear-filters" class="btn tertiary full">
-                  Limpiar filtros
-                </button>
+                <label class="check"><input id="in-stock" type="checkbox" /> Solo disponibles</label
+                ><button id="clear-filters" class="btn tertiary full">Limpiar filtros</button>
               </div>
             </details>
           </aside>
@@ -180,9 +155,7 @@
             <div class="section-heading">
               <div>
                 <h1 class="page-title">Catálogo de productos</h1>
-                <p class="muted" id="product-count" aria-live="polite">
-                  Consultando productos…
-                </p>
+                <p class="muted" id="product-count" aria-live="polite">Consultando productos…</p>
               </div>
               <label class="sort-control"
                 >Ordenar por<select id="sort">
@@ -195,26 +168,21 @@
             </div>
             <div id="search-summary" class="search-summary" hidden></div>
             <div id="catalog-products" class="product-grid"></div>
-            <nav id="catalog-pagination" class="catalog-pagination" aria-label="Páginas del catálogo"></nav>
+            <nav
+              id="catalog-pagination"
+              class="catalog-pagination"
+              aria-label="Páginas del catálogo"
+            ></nav>
           </div>
         </div>
       </section>
-      <section
-        data-view="promociones"
-        id="promociones"
-        class="view wrap page-space"
-        hidden
-      >
-        <div class="breadcrumb">
-          <a href="#inicio">Inicio</a><span>/</span>Promociones
-        </div>
+      <section data-view="promociones" id="promociones" class="view wrap page-space" hidden>
+        <div class="breadcrumb"><a href="#inicio">Inicio</a><span>/</span>Promociones</div>
         <div class="section-heading">
           <div>
             <span class="eyebrow">OPORTUNIDADES TECNOPC</span>
             <h1 class="page-title">Promociones</h1>
-            <p class="muted">
-              Aquí encontrarás las campañas cuando estén publicadas.
-            </p>
+            <p class="muted">Aquí encontrarás las campañas cuando estén publicadas.</p>
           </div>
         </div>
         <div class="empty-state panel">
@@ -225,15 +193,11 @@
         </div>
       </section>
       <section data-view="armar" id="armar" class="view wrap page-space" hidden>
-        <div class="breadcrumb">
-          <a href="#inicio">Inicio</a><span>/</span>Armar mi PC
-        </div>
+        <div class="breadcrumb"><a href="#inicio">Inicio</a><span>/</span>Armar mi PC</div>
         <div class="center-heading">
           <span class="eyebrow">TU EQUIPO, A TU MEDIDA</span>
           <h1 class="page-title">Arma tu PC personalizada</h1>
-          <p class="muted">
-            Selecciona los componentes y solicita tu cotización.
-          </p>
+          <p class="muted">Selecciona los componentes y solicita tu cotización.</p>
         </div>
         <div class="builder-layout">
           <div class="panel builder-parts" id="builder-parts"></div>
@@ -248,11 +212,7 @@
             <form id="quote-form" class="stack-form">
               <h3>Solicitar cotización</h3>
               <label
-                >Nombre<input
-                  name="nombre"
-                  maxlength="80"
-                  autocomplete="name"
-                  required /></label
+                >Nombre<input name="nombre" maxlength="80" autocomplete="name" required /></label
               ><label
                 >Teléfono<input
                   name="telefono"
@@ -263,34 +223,21 @@
                   required
               /></label>
               <div class="notification-fields"></div>
-              <button class="btn full" type="submit">
-                Solicitar cotización →
-              </button>
-              <div
-                id="quote-message"
-                class="form-message"
-                aria-live="polite"
-              ></div>
+              <button class="btn full" type="submit">Solicitar cotización →</button>
+              <div id="quote-message" class="form-message" aria-live="polite"></div>
             </form>
           </aside>
         </div>
       </section>
-      <section
-        data-view="servicio"
-        id="servicio"
-        class="view wrap page-space"
-        hidden
-      >
-        <div class="breadcrumb">
-          <a href="#inicio">Inicio</a><span>/</span>Servicio técnico
-        </div>
+      <section data-view="servicio" id="servicio" class="view wrap page-space" hidden>
+        <div class="breadcrumb"><a href="#inicio">Inicio</a><span>/</span>Servicio técnico</div>
         <div class="service-layout">
           <div class="service-intro">
             <span class="eyebrow">SOPORTE PARA SEGUIR ADELANTE</span>
             <h1>Volvamos a poner<br />tu equipo en <em>marcha.</em></h1>
             <p>
-              Cuéntanos qué sucede. Nuestro equipo revisará tu solicitud para
-              coordinar el diagnóstico y confirmar el presupuesto.
+              Cuéntanos qué sucede. Nuestro equipo revisará tu solicitud para coordinar el
+              diagnóstico y confirmar el presupuesto.
             </p>
             <div class="service-step">
               <b>01</b>
@@ -310,9 +257,7 @@
               <b>03</b>
               <div>
                 <h3>Sigue tu reparación</h3>
-                <p>
-                  Conserva el código que te entregarán al recibir el equipo.
-                </p>
+                <p>Conserva el código que te entregarán al recibir el equipo.</p>
               </div>
             </div>
           </div>
@@ -321,11 +266,7 @@
             <p class="muted">Déjanos tus datos para contactarte.</p>
             <div class="form-row">
               <label
-                >Nombre<input
-                  name="nombre"
-                  maxlength="80"
-                  autocomplete="name"
-                  required /></label
+                >Nombre<input name="nombre" maxlength="80" autocomplete="name" required /></label
               ><label
                 >Teléfono<input
                   name="telefono"
@@ -353,14 +294,8 @@
               ></textarea>
             </label>
             <div class="notification-fields"></div>
-            <button type="submit" class="btn full">
-              Enviar solicitud de servicio →
-            </button>
-            <div
-              id="service-message"
-              class="form-message"
-              aria-live="polite"
-            ></div>
+            <button type="submit" class="btn full">Enviar solicitud de servicio →</button>
+            <div id="service-message" class="form-message" aria-live="polite"></div>
           </form>
         </div>
       </section>
@@ -369,13 +304,9 @@
           <div class="wrap">
             <span class="eyebrow light">CADA PASO, A TU ALCANCE</span>
             <h1>Seguimiento de tu equipo</h1>
-            <p>
-              Consulta el avance de tu reparación con el código del comprobante
-              de ingreso.
-            </p>
+            <p>Consulta el avance de tu reparación con el código del comprobante de ingreso.</p>
             <form id="tracking-form">
-              <label class="sr-only" for="tracking-code"
-                >Código de ingreso</label
+              <label class="sr-only" for="tracking-code">Código de ingreso</label
               ><input
                 id="tracking-code"
                 placeholder="TPC-2026-XXXXXXXXXXXX"
@@ -392,28 +323,19 @@
               <span class="empty-symbol">◎</span>
               <h2>Tu equipo, paso a paso</h2>
               <p>
-                Ingresa el código que recibiste en el taller. No necesitas
-                compartir datos personales para consultar el estado.
+                Ingresa el código que recibiste en el taller. No necesitas compartir datos
+                personales para consultar el estado.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <section
-        data-view="compras"
-        id="compras"
-        class="view wrap page-space"
-        hidden
-      >
-        <div class="breadcrumb">
-          <a href="#inicio">Inicio</a><span>/</span>Carrito
-        </div>
+      <section data-view="compras" id="compras" class="view wrap page-space" hidden>
+        <div class="breadcrumb"><a href="#inicio">Inicio</a><span>/</span>Carrito</div>
         <div class="section-heading">
           <div>
             <h1 class="page-title">Tu carrito</h1>
-            <p class="muted">
-              Revisa los productos antes de continuar al pago.
-            </p>
+            <p class="muted">Revisa los productos antes de continuar al pago.</p>
           </div>
           <a href="#catalogo" class="text-link">Seguir comprando →</a>
         </div>
@@ -421,12 +343,7 @@
           <div id="cart-items"></div>
           <form id="checkout-form" class="panel stack-form">
             <h2>Completa tu compra</h2>
-            <button
-              type="button"
-              class="btn secondary full"
-              id="resume-order"
-              hidden
-            >
+            <button type="button" class="btn secondary full" id="resume-order" hidden>
               Ver comprobante de mi último pedido
             </button>
             <div id="cart-totals" class="totals"></div>
@@ -443,15 +360,12 @@
               Crear pedido y ver comprobante →
             </button>
             <p class="secure-note">
-              ◇ El proveedor procesa el pago. No solicitamos datos de tarjeta en
-              esta página.
+              ◇ El proveedor procesa el pago. No solicitamos datos de tarjeta en esta página.
             </p>
-            <div
-              id="checkout-message"
-              class="form-message"
-              aria-live="polite"
-            ></div>
-            <button type="button" class="btn secondary" id="reset-checkout-attempt" hidden>Resolver intento anterior</button>
+            <div id="checkout-message" class="form-message" aria-live="polite"></div>
+            <button type="button" class="btn secondary" id="reset-checkout-attempt" hidden>
+              Resolver intento anterior
+            </button>
           </form>
         </div>
       </section>
@@ -471,12 +385,7 @@
           ×
         </button>
       </div>
-      <div
-        id="order-receipt-status"
-        class="receipt-status"
-        role="status"
-        aria-live="polite"
-      ></div>
+      <div id="order-receipt-status" class="receipt-status" role="status" aria-live="polite"></div>
       <div id="order-receipt-paper"></div>
       <div class="receipt-actions">
         <button type="button" class="btn secondary" id="refresh-order-receipt">
@@ -485,12 +394,7 @@
         <button type="button" class="btn secondary" id="print-order-receipt">
           Imprimir / Guardar PDF
         </button>
-        <a
-          class="btn"
-          id="order-payment-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          hidden
+        <a class="btn" id="order-payment-link" target="_blank" rel="noopener noreferrer" hidden
           >Continuar al pago seguro ↗</a
         >
       </div>
@@ -500,17 +404,19 @@
     </dialog>
     <footer>
       <div class="wrap footer-top">
-        <a class="brand" href="#inicio" aria-label="TecnoPC, inicio"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M8 5H35L31 25H4ZM13 11H28L26 19H11ZM8 30H34L38 10" /></svg>Tecno<b>PC</b></a>
+        <a class="brand" href="#inicio" aria-label="TecnoPC, inicio"
+          ><svg viewBox="0 0 40 36" aria-hidden="true">
+            <path d="M8 5H35L31 25H4ZM13 11H28L26 19H11ZM8 30H34L38 10" /></svg
+          >Tecno<b>PC</b></a
+        >
         <p>Tu tecnología. Tu próximo paso.</p>
         <div>
-          <a href="#catalogo">Catálogo</a
-          ><a href="#servicio">Servicio técnico</a
+          <a href="#catalogo">Catálogo</a><a href="#servicio">Servicio técnico</a
           ><a href="#seguimiento">Seguimiento</a>
         </div>
       </div>
       <div class="wrap footer-bottom">
-        <span>© TecnoPC</span
-        ><span>Precios en COP · IVA incluido en precios mostrados</span>
+        <span>© TecnoPC</span><span>Precios en COP · IVA incluido en precios mostrados</span>
       </div>
     </footer>
     <div id="toast" class="toast" role="status" hidden></div>
@@ -526,35 +432,24 @@
         <path d="M16 3v5M11 16h0M21 16h0M11 21h10M1 15v6M31 15v6" /></svg
       ><span>¿Te ayudamos?</span>
     </button>
-    <aside
-      id="chat-panel"
-      class="chat-panel"
-      role="dialog"
-      aria-label="Asistente TecnoPC"
-      hidden
-    >
+    <aside id="chat-panel" class="chat-panel" role="dialog" aria-label="Asistente TecnoPC" hidden>
       <div class="chat-head">
         <span class="bot-avatar">▣</span>
         <div>
-          <strong>Asistente TecnoPC</strong
-          ><small id="chat-status">Orientación de la tienda</small>
+          <strong>Asistente TecnoPC</strong><small id="chat-status">Orientación de la tienda</small>
         </div>
-        <button id="chat-close" type="button" aria-label="Cerrar asistente">
-          ×
-        </button>
+        <button id="chat-close" type="button" aria-label="Cerrar asistente">×</button>
       </div>
       <div id="chat-messages" class="chat-messages" aria-live="polite">
         <div class="chat-bubble bot">
-          ¡Hola! Soy el asistente de TecnoPC. Puedo ayudarte con productos,
-          armado de PC y servicio técnico. ¿Qué necesitas?
+          ¡Hola! Soy el asistente de TecnoPC. Puedo ayudarte con productos, armado de PC y servicio
+          técnico. ¿Qué necesitas?
         </div>
       </div>
       <div class="chat-quick">
         <button type="button" data-chat-route="catalogo">▦ Ver catálogo</button
         ><button type="button" data-chat-route="armar">⚒ Armar mi PC</button
-        ><button type="button" data-chat-route="seguimiento">
-          ◎ Seguir mi reparación
-        </button>
+        ><button type="button" data-chat-route="seguimiento">◎ Seguir mi reparación</button>
       </div>
       <form id="chat-form" class="chat-compose">
         <label class="sr-only" for="chat-input">Escribe un mensaje</label

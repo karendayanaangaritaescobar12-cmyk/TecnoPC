@@ -19,7 +19,9 @@ El backend sirve tanto la web pública como las API de las aplicaciones internas
 Para desarrollo: JDK 21, Maven 3.9 y una base MySQL 8 o TiDB accesible.
 `java -version` debe mostrar Java 21 y `mvn -version` debe utilizar ese JDK.
 Docker es opcional si se compila con Maven. No hace falta instalar Node.js
-ni ejecutar un servidor separado para el frontend.
+ni ejecutar un servidor separado para servir el frontend. Para modificarlo
+y ejecutar sus comprobaciones, utiliza Node.js 22 y `npm ci --ignore-scripts`.
+Consulta [la guía de mantenimiento](CONTRIBUTING.md).
 
 ## Instalación local
 
@@ -167,6 +169,23 @@ Consulta [despliegue y avisos](documentacion/guias/DESPLIEGUE_Y_AVISOS.md).
 
 ## Pruebas
 
+Comprobaciones del frontend (ESLint, pruebas JavaScript y formato):
+
+```powershell
+npm ci --ignore-scripts
+npm run check
+```
+
+Pruebas de la tienda en navegador, con pedidos y pagos simulados:
+
+```powershell
+npx playwright install chromium
+npm run test:browser
+```
+
+En Windows, `./packaging/check.ps1 -Browser` ejecuta las comprobaciones del
+frontend, Java y navegador con un solo comando una vez preparadas las herramientas.
+
 Desde la raíz, con Java 21 y Maven:
 
 ```powershell
@@ -194,6 +213,11 @@ TiDB ni pagos. Si una prueba falla, la ejecución aparece en rojo y muestra
 el error en el paso de pruebas. Este workflow no despliega la aplicación ni
 impide por sí solo que Render despliegue un commit; esa coordinación requiere
 configurar las reglas del repositorio y del despliegue por separado.
+
+[El workflow del frontend](.github/workflows/frontend-checks.yml) añade análisis
+de código, formato, pruebas unitarias y recorridos de navegador. Dependabot
+propone actualizaciones semanales para revisión; no se aceptan automáticamente.
+La estructura de módulos y los pasos de trabajo están en [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Seguridad y caché de la web
 

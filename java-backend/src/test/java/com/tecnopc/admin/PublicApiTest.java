@@ -136,8 +136,10 @@ class PublicApiTest {
             .andExpect(content().contentTypeCompatibleWith("text/html"))
             .andExpect(content().string(org.hamcrest.Matchers.containsString("TecnoPC")));
         mvc.perform(get("/js/app.js")).andExpect(status().isOk())
-            .andExpect(content().string(org.hamcrest.Matchers.containsString("/api/public")))
+            .andExpect(content().string(org.hamcrest.Matchers.containsString("./api.js")))
             .andExpect(content().string(org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString(".php"))));
+        mvc.perform(get("/js/api.js")).andExpect(status().isOk())
+            .andExpect(content().string(org.hamcrest.Matchers.containsString("/api/public")));
     }
     @Test void unknownPublicRoutesStayPrivate() throws Exception {
         mvc.perform(get("/api/public/empleados")).andExpect(status().isUnauthorized());

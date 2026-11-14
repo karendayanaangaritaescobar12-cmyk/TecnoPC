@@ -202,8 +202,17 @@ h3 {
   gap: 30px;
   height: 78px;
 }
-.catalog-pagination { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
-.catalog-pagination:empty { display: none; }
+.catalog-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.catalog-pagination:empty {
+  display: none;
+}
 .brand {
   display: flex;
   align-items: center;
@@ -1881,5 +1890,10 @@ footer {
     transition: none !important;
   }
 }
-.brand-empty-message { font-size: 10px; }
-.builder-empty-message { text-align: center; font-size: 11px; }
+.brand-empty-message {
+  font-size: 10px;
+}
+.builder-empty-message {
+  text-align: center;
+  font-size: 11px;
+}

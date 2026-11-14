@@ -1,5 +1,6 @@
-"use strict";
-const API = "/api/public";
+import { api } from "./api.js";
+import { esc, money, totalPrice } from "./display.js";
+import { validPaymentUrl } from "./payment-url.js";
 const IVA = 0.19,
   ENSAMBLE = 80000;
 const GROUPS = [
@@ -63,17 +64,6 @@ try {
       .slice(0, 30);
 } catch {}
 const $ = (selector) => document.querySelector(selector);
-const esc = (value) =>
-  String(value ?? "").replace(
-    /[&<>"']/g,
-    (char) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        char
-      ],
-  );
-const money = (value) =>
-  "$" + Math.round(Number(value) || 0).toLocaleString("es-CO");
-const totalPrice = (product) => Math.round(Number(product.precio) * 119) / 100;
 const illustration = (type, classes = "") =>
   `<svg class="${classes}" viewBox="0 0 180 140" aria-hidden="true"><use href="images/devices.svg#${Object.hasOwn(CATEGORIES, type) || type === "headset" ? type : "pc"}"/></svg>`;
 const product = (id) => state.products.find((p) => Number(p.id) === Number(id));
@@ -104,66 +94,6 @@ function message(target, text, success = false) {
   target.textContent = text;
   target.classList.toggle("success", success);
 }
-const pendingReads = new Map();
-const apiCooldowns = new Map();
-async function api(path, options = {}, timeout) {
-  const method = (options.method || "GET").toUpperCase();
-  timeout ??= method === "GET" ? 12000 : 35000;
-  const key = `${method}:${path}`;
-  const remaining = Math.ceil(((apiCooldowns.get(key) || 0) - Date.now()) / 1000);
-  if (remaining > 0)
-    throw new Error(`El servicio está ocupado. Espera ${remaining} segundos antes de volver a intentar.`);
-  if (method === "GET" && pendingReads.has(key)) return pendingReads.get(key);
-  const request = performApiRequest(path, options, timeout, key);
-  if (method === "GET") pendingReads.set(key, request);
-  try { return await request; }
-  finally { if (pendingReads.get(key) === request) pendingReads.delete(key); }
-}
-async function performApiRequest(path, options, timeout, key) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeout);
-  try {
-    const response = await fetch(`${API}/${path}`, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...(options.headers || {}),
-      },
-      signal: controller.signal,
-    });
-    let data;
-    try { data = await response.json(); } catch {}
-    if (path === "v2/pagos" && [401,403,404].includes(response.status))
-      throw new Error("El servidor todavía no admite esta versión de la tienda. Actualiza el servicio antes de crear el pedido.");
-    if (response.status === 429 || response.status === 503) {
-      const delay = Math.max(1, Math.min(60, Number(response.headers.get("Retry-After")) || 5));
-      apiCooldowns.set(key, Date.now() + delay * 1000);
-      throw new Error(`${data?.mensaje || "El servicio no está disponible temporalmente."} Espera ${delay} segundos.`);
-    }
-    if (!data) throw new Error("El servidor no devolvió una respuesta válida.");
-    if (!response.ok) {
-      const error = new Error(data.mensaje || "No se pudo completar la solicitud.");
-      error.status = response.status; throw error;
-    }
-    return data;
-  } catch (error) {
-    if (error.name === "AbortError")
-      throw new Error(
-        (options.method || "GET").toUpperCase() === "GET"
-          ? "El servidor está tardando en responder. Conservamos tu carrito; intenta más tarde."
-          : "No se pudo confirmar la respuesta. Comprueba el estado antes de repetir una compra o solicitud.",
-      );
-    if (error instanceof TypeError)
-      throw new Error(
-        (options.method || "GET").toUpperCase() === "GET"
-          ? "No se pudo conectar con la tienda. Comprueba tu conexión."
-          : "Se perdió la conexión y no se pudo confirmar el resultado. Conserva el intento para recuperar la misma operación.",
-      );
-    throw error;
-  } finally {
-    clearTimeout(timer);
-  }
-}
 function showView(name) {
   const view = VIEWS.has(name) ? name : "inicio";
   document
@@ -178,9 +108,7 @@ function showView(name) {
   if (view === "compras") renderCart();
   window.scrollTo({
     top: 0,
-    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "instant"
-      : "smooth",
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
   });
 }
 function navigate(view) {
@@ -236,9 +164,7 @@ function renderFilters() {
         )
         .join("")
     : '<p class="muted brand-empty-message">Las marcas aparecerán con los productos.</p>';
-  $("#price-filter").max = String(
-    Math.max(10000000, ...state.products.map(totalPrice)),
-  );
+  $("#price-filter").max = String(Math.max(10000000, ...state.products.map(totalPrice)));
   $("#price-filter").value = String(state.price);
   $("#price-limit").textContent = money(state.price);
 }
@@ -267,9 +193,10 @@ function renderCatalog(page = 0) {
   );
   const pages = Math.max(1, Math.ceil(list.length / 60));
   page = Math.min(page, pages - 1);
-  $("#catalog-pagination").innerHTML = !state.error && pages > 1
-    ? `<button class="btn secondary" type="button" data-catalog-page="${page - 1}" ${page === 0 ? "disabled" : ""}>Anterior</button><span>Página ${page + 1} de ${pages}</span><button class="btn secondary" type="button" data-catalog-page="${page + 1}" ${page === pages - 1 ? "disabled" : ""}>Siguiente</button>`
-    : "";
+  $("#catalog-pagination").innerHTML =
+    !state.error && pages > 1
+      ? `<button class="btn secondary" type="button" data-catalog-page="${page - 1}" ${page === 0 ? "disabled" : ""}>Anterior</button><span>Página ${page + 1} de ${pages}</span><button class="btn secondary" type="button" data-catalog-page="${page + 1}" ${page === pages - 1 ? "disabled" : ""}>Siguiente</button>`
+      : "";
   $("#product-count").textContent =
     `${list.length} ${list.length === 1 ? "producto encontrado" : "productos encontrados"} · precios con IVA`;
   $("#search-summary").hidden = !state.query;
@@ -281,7 +208,10 @@ function renderCatalog(page = 0) {
         '<button class="btn secondary" data-reload>Volver a intentar</button>',
       )
     : list.length
-      ? list.slice(page * 60, (page + 1) * 60).map(card).join("")
+      ? list
+          .slice(page * 60, (page + 1) * 60)
+          .map(card)
+          .join("")
       : state.products.length
         ? empty(
             "No encontramos coincidencias",
@@ -315,15 +245,11 @@ document.addEventListener("change", (event) => {
   const category = event.target.dataset.filterCategory,
     selectedBrand = event.target.dataset.filterBrand;
   if (category) {
-    event.target.checked
-      ? state.categories.add(category)
-      : state.categories.delete(category);
+    event.target.checked ? state.categories.add(category) : state.categories.delete(category);
     renderCatalog();
   }
   if (selectedBrand) {
-    event.target.checked
-      ? state.brands.add(selectedBrand)
-      : state.brands.delete(selectedBrand);
+    event.target.checked ? state.brands.add(selectedBrand) : state.brands.delete(selectedBrand);
     renderCatalog();
   }
   if (event.target.dataset.part) {
@@ -381,15 +307,11 @@ function renderBuilder() {
   renderBuilderSummary();
 }
 function renderBuilderSummary() {
-  const chosen = PARTS.map(([key]) => product(state.selection[key])).filter(
-    Boolean,
-  );
+  const chosen = PARTS.map(([key]) => product(state.selection[key])).filter(Boolean);
   const assembly = chosen.length ? ENSAMBLE : 0,
     base = chosen.reduce((sum, p) => sum + Number(p.precio), 0) + assembly;
   $("#builder-selection").innerHTML = chosen.length
-    ? chosen
-        .map((p) => `<span class="part-chip">✓ ${esc(p.nombre)}</span>`)
-        .join("")
+    ? chosen.map((p) => `<span class="part-chip">✓ ${esc(p.nombre)}</span>`).join("")
     : '<p class="muted builder-empty-message">Aún no has seleccionado componentes.</p>';
   $("#builder-totals").innerHTML = totalsMarkup(
     base,
@@ -427,9 +349,7 @@ function saveCart() {
   try {
     localStorage.setItem("tecnopc_cart_v2", JSON.stringify(cart));
   } catch {}
-  $("#cart-count").textContent = String(
-    cart.reduce((n, line) => n + line.quantity, 0),
-  );
+  $("#cart-count").textContent = String(cart.reduce((n, line) => n + line.quantity, 0));
 }
 function addCart(id) {
   const p = product(id);
@@ -451,13 +371,8 @@ function addCart(id) {
   renderCart();
 }
 function renderCart() {
-  const lines = cart
-    .map((line) => ({ ...line, p: product(line.id) }))
-    .filter((x) => x.p);
-  const base = lines.reduce(
-    (n, line) => n + Number(line.p.precio) * line.quantity,
-    0,
-  );
+  const lines = cart.map((line) => ({ ...line, p: product(line.id) })).filter((x) => x.p);
+  const base = lines.reduce((n, line) => n + Number(line.p.precio) * line.quantity, 0);
   $("#cart-items").innerHTML = lines.length
     ? lines
         .map(
@@ -473,8 +388,7 @@ function renderCart() {
   $("#cart-totals").innerHTML = totalsMarkup(base);
   $("#checkout-button").disabled =
     !lines.length || lines.some((line) => line.quantity > stock(line.p));
-  if (window.TecnoPCOrderReceipt?.hasOrder())
-    $("#checkout-button").disabled = false;
+  if (window.TecnoPCOrderReceipt?.hasOrder()) $("#checkout-button").disabled = false;
   saveCart();
 }
 function notificationFields() {
@@ -488,12 +402,9 @@ function contact(form) {
     whatsapp = String(form.get("aviso_whatsapp") || "").trim(),
     avisosCorreo = form.get("avisos_correo") === "on",
     avisosWhatsapp = form.get("avisos_whatsapp") === "on";
-  if (avisosCorreo && !correo)
-    throw new Error("Indica tu correo para autorizar los avisos.");
+  if (avisosCorreo && !correo) throw new Error("Indica tu correo para autorizar los avisos.");
   if (avisosWhatsapp && !whatsapp)
-    throw new Error(
-      "Indica WhatsApp con código de país para autorizar los avisos.",
-    );
+    throw new Error("Indica WhatsApp con código de país para autorizar los avisos.");
   return { correo, whatsapp, avisosCorreo, avisosWhatsapp };
 }
 async function submitRequest(form, type, detail, target) {
@@ -538,17 +449,12 @@ $("#service-form").addEventListener("submit", (event) => {
 });
 $("#quote-form").addEventListener("submit", (event) => {
   event.preventDefault();
-  const chosen = PARTS.map(([key]) => product(state.selection[key])).filter(
-    Boolean,
-  );
+  const chosen = PARTS.map(([key]) => product(state.selection[key])).filter(Boolean);
   if (!chosen.length) return;
   submitRequest(
     event.target,
     "cotizacion",
-    ("PC personalizada: " + chosen.map((p) => p.nombre).join(" + ")).slice(
-      0,
-      600,
-    ),
+    ("PC personalizada: " + chosen.map((p) => p.nombre).join(" + ")).slice(0, 600),
     $("#quote-message"),
   );
 });
@@ -556,29 +462,56 @@ const checkoutIntentStorage = "tecnopc-checkout-intent-v1";
 async function prepareCheckoutIntent(payload) {
   if (!globalThis.crypto?.subtle || !globalThis.crypto?.randomUUID)
     throw new Error("Para crear pedidos abre la tienda mediante HTTPS o desde localhost.");
-  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(payload)));
-  const fingerprint = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(JSON.stringify(payload)),
+  );
+  const fingerprint = [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
   let saved;
-  try { saved = JSON.parse(sessionStorage.getItem(checkoutIntentStorage) || "null"); }
-  catch { throw new Error("No se pudo recuperar el intento de compra. Permite el almacenamiento de esta pestaña antes de continuar."); }
+  try {
+    saved = JSON.parse(sessionStorage.getItem(checkoutIntentStorage) || "null");
+  } catch {
+    throw new Error(
+      "No se pudo recuperar el intento de compra. Permite el almacenamiento de esta pestaña antes de continuar.",
+    );
+  }
   if (saved) {
     if (!/^[0-9a-f-]{36}$/.test(saved.key) || saved.fingerprint !== fingerprint)
-      throw new Error("Hay un intento anterior con otros datos. Revisa su resultado antes de iniciar otra compra o resolver el intento anterior.");
+      throw new Error(
+        "Hay un intento anterior con otros datos. Revisa su resultado antes de iniciar otra compra o resolver el intento anterior.",
+      );
     return saved.key;
   }
   const key = crypto.randomUUID();
   try {
-    sessionStorage.setItem(checkoutIntentStorage, JSON.stringify({key, fingerprint}));
+    sessionStorage.setItem(checkoutIntentStorage, JSON.stringify({ key, fingerprint }));
     if (!sessionStorage.getItem(checkoutIntentStorage)) throw new Error();
-  } catch { throw new Error("No se pudo guardar el intento de compra. Permite el almacenamiento de esta pestaña; no se ha enviado el pedido."); }
+  } catch {
+    throw new Error(
+      "No se pudo guardar el intento de compra. Permite el almacenamiento de esta pestaña; no se ha enviado el pedido.",
+    );
+  }
   return key;
 }
 $("#reset-checkout-attempt").addEventListener("click", () => {
-  if (!confirm("Comprueba primero si la compra ya quedó registrada. Descartar este intento no cancela pedidos ni pagos y puede permitir crear otro. ¿Ya verificaste el resultado y quieres descartarlo?")) return;
-  try { sessionStorage.removeItem(checkoutIntentStorage); $("#reset-checkout-attempt").hidden = true; }
-  catch { message($("#checkout-message"), "No se pudo descartar el intento local."); }
+  if (
+    !confirm(
+      "Comprueba primero si la compra ya quedó registrada. Descartar este intento no cancela pedidos ni pagos y puede permitir crear otro. ¿Ya verificaste el resultado y quieres descartarlo?",
+    )
+  )
+    return;
+  try {
+    sessionStorage.removeItem(checkoutIntentStorage);
+    $("#reset-checkout-attempt").hidden = true;
+  } catch {
+    message($("#checkout-message"), "No se pudo descartar el intento local.");
+  }
 });
-try { $("#reset-checkout-attempt").hidden = !sessionStorage.getItem(checkoutIntentStorage); } catch {}
+try {
+  $("#reset-checkout-attempt").hidden = !sessionStorage.getItem(checkoutIntentStorage);
+} catch {}
 $("#checkout-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   const form = event.target,
@@ -594,25 +527,24 @@ $("#checkout-form").addEventListener("submit", async (event) => {
   try {
     const fields = new FormData(form);
     const payload = {
-        cliente_nombre: fields.get("cliente_nombre").trim(),
-        contacto: contact(fields),
-        items: [...cart].sort((a,b) => a.id-b.id).map((line) => ({
+      cliente_nombre: fields.get("cliente_nombre").trim(),
+      contacto: contact(fields),
+      items: [...cart]
+        .sort((a, b) => a.id - b.id)
+        .map((line) => ({
           producto_id: line.id,
           cantidad: line.quantity,
         })),
-      };
+    };
     const key = await prepareCheckoutIntent(payload);
     $("#reset-checkout-attempt").hidden = false;
-    const result = await api("v2/pagos", {method:"POST", headers:{"Idempotency-Key":key}, body:JSON.stringify(payload)});
+    const result = await api("v2/pagos", {
+      method: "POST",
+      headers: { "Idempotency-Key": key },
+      body: JSON.stringify(payload),
+    });
     const url = result.url_pago ? new URL(result.url_pago) : null;
-    if (url && (
-      url.protocol !== "https:" ||
-      !["www.mercadopago.com.co", "sandbox.mercadopago.com.co"].includes(
-        url.hostname,
-      ) ||
-      url.username ||
-      url.password
-    ))
+    if (url && !validPaymentUrl(result.url_pago))
       throw new Error("El enlace de pago no es válido.");
     await window.TecnoPCOrderReceipt.created(result, url?.href || "");
     try {
@@ -621,8 +553,11 @@ $("#checkout-form").addEventListener("submit", async (event) => {
       $("#reset-checkout-attempt").hidden = !sessionStorage.getItem(checkoutIntentStorage);
     } catch {}
   } catch (error) {
-    if ([400,422].includes(error.status)) {
-      try { sessionStorage.removeItem(checkoutIntentStorage); $("#reset-checkout-attempt").hidden = true; } catch {}
+    if ([400, 422].includes(error.status)) {
+      try {
+        sessionStorage.removeItem(checkoutIntentStorage);
+        $("#reset-checkout-attempt").hidden = true;
+      } catch {}
     }
     message($("#checkout-message"), error.message);
   } finally {
@@ -683,14 +618,11 @@ $("#tracking-form").addEventListener("submit", async (event) => {
     const descriptions = {
       recibido: "Tu equipo ya está en el taller y está pendiente de revisión.",
       diagnostico: "El equipo está en revisión para identificar el problema.",
-      esperando_autorizacion:
-        "El taller espera tu autorización para continuar.",
+      esperando_autorizacion: "El taller espera tu autorización para continuar.",
       en_reparacion: "El equipo técnico está trabajando en tu reparación.",
-      listo:
-        "El trabajo está listo. Contacta al taller para coordinar la recogida.",
+      listo: "El trabajo está listo. Contacta al taller para coordinar la recogida.",
       entregado: "El taller registró la entrega del equipo.",
-      cancelado:
-        "La orden fue cancelada. Contacta al taller para conocer los detalles.",
+      cancelado: "La orden fue cancelada. Contacta al taller para conocer los detalles.",
     };
     target.innerHTML = `<div class="panel"><div class="tracking-top"><div><h2>Estado de la reparación</h2><small>${esc(info.equipo)} · Ingreso ${esc(date(info.fechaIngreso))}</small></div><span class="tracking-code">${esc(info.codigo)}</span></div>${
       info.estado === "cancelado"
@@ -714,9 +646,7 @@ function setChat(open) {
   if (open) $("#chat-input").focus();
   else $("#chat-toggle").focus();
 }
-$("#chat-toggle").addEventListener("click", () =>
-  setChat($("#chat-panel").hidden),
-);
+$("#chat-toggle").addEventListener("click", () => setChat($("#chat-panel").hidden));
 $("#chat-close").addEventListener("click", () => setChat(false));
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !$("#chat-panel").hidden) setChat(false);
@@ -770,8 +700,7 @@ $("#chat-form").addEventListener("submit", async (event) => {
     );
     chatHistory.push(text);
     if (chatHistory.length > 6) chatHistory.shift();
-    waiting.textContent =
-      result.respuesta || "Cuéntame un poco más para poder orientarte.";
+    waiting.textContent = result.respuesta || "Cuéntame un poco más para poder orientarte.";
     const destination = String(result.accion?.destino || "").replace(/^#/, "");
     if (VIEWS.has(destination)) {
       const action = document.createElement("button");
@@ -793,18 +722,20 @@ $("#chat-form").addEventListener("submit", async (event) => {
     $("#chat-messages").scrollTop = $("#chat-messages").scrollHeight;
   }
 });
-async function loadCatalog() {
+export async function loadCatalog() {
   if (loadCatalog.pending) return loadCatalog.pending;
   loadCatalog.pending = refreshCatalog();
-  try { return await loadCatalog.pending; }
-  finally { loadCatalog.pending = null; }
+  try {
+    return await loadCatalog.pending;
+  } finally {
+    loadCatalog.pending = null;
+  }
 }
 async function refreshCatalog() {
   state.error = "";
   try {
     const list = await api("productos");
-    if (!Array.isArray(list))
-      throw new Error("El catálogo no tiene el formato esperado.");
+    if (!Array.isArray(list)) throw new Error("El catálogo no tiene el formato esperado.");
     state.products = list.filter(
       (p) =>
         Number.isSafeInteger(Number(p.id)) &&

@@ -10,3 +10,5 @@ docs-java
 .local-secrets/
 .tools
 dist
+node_modules
+tests

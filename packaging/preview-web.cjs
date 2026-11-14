@@ -10,14 +10,22 @@ const types = {
   ".png": "image/png",
   ".ico": "image/x-icon",
 };
-http
+const server = http
   .createServer(async (req, res) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'");
+    res.setHeader(
+      "Content-Security-Policy",
+      "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+    );
     res.setHeader("Referrer-Policy", "no-referrer");
     res.setHeader("X-Content-Type-Options", "nosniff");
     try {
       const url = new URL(req.url, "http://localhost");
       if (url.pathname.startsWith("/api/")) {
+        if (process.env.TECNOPC_PREVIEW_OFFLINE === "1") {
+          res.writeHead(503, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ mensaje: "API simulada: configura una ruta de prueba" }));
+          return;
+        }
         const chunks = [];
         for await (const chunk of req) chunks.push(chunk);
         const upstream = await fetch("http://127.0.0.1:8081" + url.pathname, {
@@ -27,15 +35,12 @@ http
           signal: AbortSignal.timeout(25000),
         });
         res.writeHead(upstream.status, {
-          "Content-Type":
-            upstream.headers.get("content-type") || "application/json",
+          "Content-Type": upstream.headers.get("content-type") || "application/json",
         });
         res.end(Buffer.from(await upstream.arrayBuffer()));
         return;
       }
-      const relative = decodeURIComponent(
-        url.pathname === "/" ? "/index.html" : url.pathname,
-      );
+      const relative = decodeURIComponent(url.pathname === "/" ? "/index.html" : url.pathname);
       const file = path.resolve(root, "." + relative);
       if (
         !file.startsWith(root + path.sep) ||
@@ -56,6 +61,6 @@ http
       res.end(JSON.stringify({ mensaje: "Servidor no disponible" }));
     }
   })
-  .listen(8082, "127.0.0.1", () =>
-    process.stdout.write("Vista previa en http://127.0.0.1:8082\n"),
+  .listen(Number(process.env.TECNOPC_PREVIEW_PORT || 8082), "127.0.0.1", () =>
+    process.stdout.write(`Vista previa en http://127.0.0.1:${server.address().port}\n`),
   );

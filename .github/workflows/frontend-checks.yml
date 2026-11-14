@@ -1,0 +1,31 @@
+name: Calidad del frontend
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: JavaScript - analisis y pruebas
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Instalar herramientas con versiones bloqueadas
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Comprobar codigo, pruebas y formato
+        run: npm run check
+      - name: Instalar Chromium para las pruebas
+        run: npx playwright install --with-deps chromium
+      - name: Probar tienda, recibos y recuperacion de pagos
+        run: npm run test:browser
