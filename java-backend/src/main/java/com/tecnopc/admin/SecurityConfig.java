@@ -28,7 +28,11 @@ public class SecurityConfig {
   return http.csrf(csrf->csrf.disable())
    .addFilterBefore(new ApiCapacityFilter(capacity), org.springframework.security.web.context.SecurityContextHolderFilter.class)
    .headers(headers->headers
-       .contentSecurityPolicy(csp->csp.policyDirectives("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"))
+       .httpStrictTransportSecurity(hsts->hsts
+           .maxAgeInSeconds(31536000)
+           .includeSubDomains(false)
+           .preload(false))
+       .contentSecurityPolicy(csp->csp.policyDirectives("default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"))
        .referrerPolicy(policy->policy.policy(org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy.NO_REFERRER))
        .permissionsPolicy(policy->policy.policy("camera=(), microphone=(), geolocation=()")))
    .addFilterBefore(new PublicRequestFilter(), BasicAuthenticationFilter.class)

@@ -23,6 +23,33 @@ class SecurityConfigTest {
     @MockitoBean JdbcTemplate jdbc;
     @MockitoBean javax.sql.DataSource datasource;
 
+    @Test void storeCspOnlyAllowsStylesFromThisOrigin() throws Exception {
+        mvc.perform(get("/index.html"))
+            .andExpect(status().isOk())
+            .andExpect(header().string("Content-Security-Policy",
+                org.hamcrest.Matchers.containsString("style-src 'self';")))
+            .andExpect(header().string("Content-Security-Policy",
+                org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("'unsafe-inline'"))));
+    }
+
+    @Test void httpsStoreResponseIncludesHstsForThisHostOnly() throws Exception {
+        mvc.perform(get("/index.html").secure(true))
+            .andExpect(status().isOk())
+            .andExpect(header().string("Strict-Transport-Security", "max-age=31536000"));
+    }
+
+    @Test void httpsAuthenticationFailureAlsoIncludesHsts() throws Exception {
+        mvc.perform(get("/api/admin/empleados").secure(true))
+            .andExpect(status().isUnauthorized())
+            .andExpect(header().string("Strict-Transport-Security", "max-age=31536000"));
+    }
+
+    @Test void plainHttpDoesNotEmitHstsEvenWithClientSuppliedHttpsHeader() throws Exception {
+        mvc.perform(get("/index.html").secure(false).header("X-Forwarded-Proto", "https"))
+            .andExpect(status().isOk())
+            .andExpect(header().doesNotExist("Strict-Transport-Security"));
+    }
+
     @Test void anonymousCannotReadPrivateData() throws Exception {
         mvc.perform(get("/api/admin/empleados")).andExpect(status().isUnauthorized());
     }

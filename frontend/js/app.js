@@ -235,7 +235,7 @@ function renderFilters() {
             `<label class="check"><input type="checkbox" data-filter-brand="${esc(name)}" ${state.brands.has(name) ? "checked" : ""}>${esc(name)}<span>${state.products.filter((p) => brand(p) === name).length}</span></label>`,
         )
         .join("")
-    : '<p class="muted" style="font-size:10px">Las marcas aparecerán con los productos.</p>';
+    : '<p class="muted brand-empty-message">Las marcas aparecerán con los productos.</p>';
   $("#price-filter").max = String(
     Math.max(10000000, ...state.products.map(totalPrice)),
   );
@@ -390,7 +390,7 @@ function renderBuilderSummary() {
     ? chosen
         .map((p) => `<span class="part-chip">✓ ${esc(p.nombre)}</span>`)
         .join("")
-    : '<p class="muted" style="text-align:center;font-size:11px">Aún no has seleccionado componentes.</p>';
+    : '<p class="muted builder-empty-message">Aún no has seleccionado componentes.</p>';
   $("#builder-totals").innerHTML = totalsMarkup(
     base,
     assembly

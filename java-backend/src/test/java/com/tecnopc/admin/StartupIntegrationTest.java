@@ -21,6 +21,24 @@ class StartupIntegrationTest {
     @Autowired MockMvc mvc;
     @Autowired org.springframework.context.ApplicationContext context;
 
+    @Test void staticAssetsCanBeStoredAndRevalidatedWithoutDownloadingTheirBodies() throws Exception {
+        for (String asset : new String[]{"/css/styles.css", "/js/app.js", "/images/logo-tecnopc.svg"}) {
+            var response = mvc.perform(get(asset)).andExpect(status().isOk())
+                .andExpect(header().string("Cache-Control", "max-age=0, must-revalidate, public"))
+                .andExpect(header().exists("Last-Modified")).andReturn().getResponse();
+            mvc.perform(get(asset).header("If-Modified-Since", response.getHeader("Last-Modified")))
+                .andExpect(status().isNotModified()).andExpect(content().string(""));
+        }
+    }
+
+    @Test void htmlAndPrivateDataKeepTheirNoStorePolicy() throws Exception {
+        mvc.perform(get("/index.html")).andExpect(status().isOk())
+            .andExpect(header().string("Cache-Control", org.hamcrest.Matchers.containsString("no-store")));
+        mvc.perform(get("/api/admin/notificaciones").with(httpBasic("admin-test", "long-test-password-only")))
+            .andExpect(status().isOk())
+            .andExpect(header().string("Cache-Control", org.hamcrest.Matchers.containsString("no-store")));
+    }
+
     @Test void freshStartCreatesSchemaAndFirstAdminBeforeServingStore() throws Exception {
         assertEquals(1,jdbc.queryForObject("SELECT COUNT(*) FROM usuarios WHERE usuario='admin-test' AND rol='ADMIN'",Integer.class));
         mvc.perform(get("/healthz")).andExpect(status().isOk());
