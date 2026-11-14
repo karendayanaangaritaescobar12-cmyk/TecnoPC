@@ -13,3 +13,15 @@ docs-java/
 .local-secrets/
 .tools/
 dist/
+
+# Archivos locales y reportes generados
+/logs/
+/conexion-tidb-estado.json
+/ui-previews/*.pdf
+/documentacion/**/*sbom*
+
+# Copias antiguas: su SQL ya esta incluido en Flyway V1__base.sql
+/java-backend/migration_v7.sql
+/java-backend/migration_v8.sql
+/java-backend/migration_v9.sql
+/java-backend/migration_v10.sql
