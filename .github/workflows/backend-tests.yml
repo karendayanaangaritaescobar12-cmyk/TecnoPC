@@ -1,0 +1,31 @@
+name: Pruebas del backend Java
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Java 21 - Maven test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Configurar Java 21 y cache de Maven
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: java-backend/pom.xml
+
+      - name: Ejecutar todas las pruebas del backend
+        run: mvn --batch-mode --no-transfer-progress -f java-backend/pom.xml test
